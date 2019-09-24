@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+  <PausePredator.DisplayName>Pause on predator attack</PausePredator.DisplayName>
+  <PausePredator.Description>If enabled, when a predator attacks a colonist, or tamed animal, the game will pause.</PausePredator.Description>
+
+  <PauseFoodBinge.DisplayName>Pause on food binge</PauseFoodBinge.DisplayName>
+  <PauseFoodBinge.Description>If enabled, when a colonist goes on a food binge, the game will pause.</PauseFoodBinge.Description>
+
+  <PauseInsulting.DisplayName>Pause on insulting spree</PauseInsulting.DisplayName>
+  <PauseInsulting.Description>If enabled, when a colonist goes on an insulting spree, the game will pause.</PauseInsulting.Description>
+
+  <PauseCorpseObsession.DisplayName>Pause on corpse obsession</PauseCorpseObsession.DisplayName>
+  <PauseCorpseObsession.Description>If enabled, when a colonist gains corpse obsession, the game will pause.</PauseCorpseObsession.Description>
+
+  <PauseSadisticRage.DisplayName>Pause on sadistic rage</PauseSadisticRage.DisplayName>
+  <PauseSadisticRage.Description>If enabled, when a colonist goes on a sadistic rage, the game will pause.</PauseSadisticRage.Description>
+
+  <PauseBerserk.DisplayName>Pause on berserk</PauseBerserk.DisplayName>
+  <PauseBerserk.Description>If enabled, when a colonist goes berserk, the game will pause.</PauseBerserk.Description>
+
+  <PauseCatatonia.DisplayName>Pause on catatonia</PauseCatatonia.DisplayName>
+  <PauseCatatonia.Description>If enabled, when a colonist goes catatonic, the game will pause.</PauseCatatonia.Description>
+
+  <PauseGaveUp.DisplayName>Pause on give up</PauseGaveUp.DisplayName>
+  <PauseGaveUp.Description>If enabled, when a colonist gives up on the colony, the game will pause.</PauseGaveUp.Description>
+
+  <PauseJailBreak.DisplayName>Pause on jail break</PauseJailBreak.DisplayName>
+  <PauseJailBreak.Description>If enabled, when a prisoner goes on a jail break, the game will pause.</PauseJailBreak.Description>
+
+  <PauseMurderousRage.DisplayName>Pause on murderous rage</PauseMurderousRage.DisplayName>
+  <PauseMurderousRage.Description>If enabled, when a colonist goes on a murderous rage, the game will pause.</PauseMurderousRage.Description>
+
+  <PauseRunWild.DisplayName>Pause on run wild</PauseRunWild.DisplayName>
+  <PauseRunWild.Description>If enabled, when a colonist runs wild, the game will pause.</PauseRunWild.Description>
+
+  <PauseSlaughter.DisplayName>Pause on slaughter</PauseSlaughter.DisplayName>
+  <PauseSlaughter.Description>If enabled, when a colonist goes on a slaughter spree, the game will pause.</PauseSlaughter.Description>
+
+  <PauseConfusion.DisplayName>Pause on confusion</PauseConfusion.DisplayName>
+  <PauseConfusion.Description>If enabled, when a colonist gets confused, the game will pause.</PauseConfusion.Description>
+
+  <PauseSocialFight.DisplayName>Pause on social fight</PauseSocialFight.DisplayName>
+  <PauseSocialFight.Description>If enabled, when colonists start a social fight, the game will pause.</PauseSocialFight.Description>
+</LanguageData>
