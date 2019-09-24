@@ -72,10 +72,10 @@ namespace More_Pause_Events
                 {
                     // This could probably be omitted, but better safe than sorry
                     Traverse i = Traverse.Create(__instance);
-                    Pawn prey = i.GetValue<Pawn>("Prey");
-                    Pawn pawn = i.GetValue<Pawn>("pawn");
+                    Pawn prey = i.Property("Prey").GetValue<Pawn>();
+                    Pawn pawn = i.Field("pawn").GetValue<Pawn>();
 
-                    if (prey.Spawned && prey.Faction == RimWorld.Faction.OfPlayer && Find.TickManager.TicksGame <= pawn.mindState.lastPredatorHuntingPlayerNotificationTick + 2500 && prey.Position.InHorDistOf(pawn.Position, 60f))
+                    if (prey.Spawned && prey.Faction == RimWorld.Faction.OfPlayer && Find.TickManager.TicksGame == pawn.mindState.lastPredatorHuntingPlayerNotificationTick && prey.Position.InHorDistOf(pawn.Position, 60f))
                     {
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
