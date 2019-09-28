@@ -11,51 +11,26 @@ namespace More_Pause_Events
     {
         public override string ModIdentifier => "MorePauseEvents";
 
-        // Settings
-        // Misc
-        private SettingHandle<bool> PausePredator;
-
-        // Minor mental breaks
-        private SettingHandle<bool> PauseFoodBinge;
-        private SettingHandle<bool> PauseInsulting;
-
-        // Major mental breaks
-        private SettingHandle<bool> PauseCorpseObsession;
-        private SettingHandle<bool> PauseSadisticRage;
-
-        // Extreme mental breaks
-        private SettingHandle<bool> PauseBerserk;
-        private SettingHandle<bool> PauseCatatonia;
-        private SettingHandle<bool> PauseGaveUp;
-        private SettingHandle<bool> PauseJailBreak;
-        private SettingHandle<bool> PauseMurderousRage;
-        private SettingHandle<bool> PauseRunWild;
-        private SettingHandle<bool> PauseSlaughter;
-
-        // Special mental breaks
-        private SettingHandle<bool> PauseConfusion;
-        private SettingHandle<bool> PauseSocialFight;
-
         public override void DefsLoaded()
         {
-            PausePredator = Settings.GetHandle<bool>("PausePredator", "PausePredator.DisplayName".Translate(), "PausePredator.Description".Translate(), false);
+            Settings.GetHandle<bool>("PausePredator", "PausePredator.DisplayName".Translate(), "PausePredator.Description".Translate(), false);
 
-            PauseFoodBinge = Settings.GetHandle<bool>("PauseFoodBinge", "PauseFoodBinge.DisplayName".Translate(), "PauseFoodBinge.Description".Translate(), false);
-            PauseInsulting = Settings.GetHandle<bool>("PauseInsulting", "PauseInsulting.DisplayName".Translate(), "PauseInsulting.Description".Translate(), false);
+            Settings.GetHandle<bool>("PauseFoodBinge", "PauseFoodBinge.DisplayName".Translate(), "PauseFoodBinge.Description".Translate(), false);
+            Settings.GetHandle<bool>("PauseInsulting", "PauseInsulting.DisplayName".Translate(), "PauseInsulting.Description".Translate(), false);
 
-            PauseCorpseObsession = Settings.GetHandle<bool>("PauseCorpseObsession", "PauseCorpseObsession.DisplayName".Translate(), "PauseCorpseObsession.Description".Translate(), true);
-            PauseSadisticRage = Settings.GetHandle<bool>("PauseSadisticRage", "PauseSadisticRage.DisplayName".Translate(), "PauseSadisticRage.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseCorpseObsession", "PauseCorpseObsession.DisplayName".Translate(), "PauseCorpseObsession.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseSadisticRage", "PauseSadisticRage.DisplayName".Translate(), "PauseSadisticRage.Description".Translate(), true);
 
-            PauseBerserk = Settings.GetHandle<bool>("PauseBerserk", "PauseBerserk.DisplayName".Translate(), "PauseBerserk.Description".Translate(), true);
-            PauseCatatonia = Settings.GetHandle<bool>("PauseCatatonia", "PauseCatatonia.DisplayName".Translate(), "PauseCatatonia.Description".Translate(), false);
-            PauseGaveUp = Settings.GetHandle<bool>("PauseGaveUp", "PauseGaveUp.DisplayName".Translate(), "PauseGaveUp.Description".Translate(), true);
-            PauseJailBreak = Settings.GetHandle<bool>("PauseJailBreak", "PauseJailBreak.DisplayName".Translate(), "PauseJailBreak.Description".Translate(), true);
-            PauseMurderousRage = Settings.GetHandle<bool>("PauseMurderousRage", "PauseMurderousRage.DisplayName".Translate(), "PauseMurderousRage.Description".Translate(), true);
-            PauseRunWild = Settings.GetHandle<bool>("PauseRunWild", "PauseRunWild.DisplayName".Translate(), "PauseRunWild.Description".Translate(), true);
-            PauseSlaughter = Settings.GetHandle<bool>("PauseSlaughter", "PauseSlaughter.DisplayName".Translate(), "PauseSlaughter.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseBerserk", "PauseBerserk.DisplayName".Translate(), "PauseBerserk.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseCatatonia", "PauseCatatonia.DisplayName".Translate(), "PauseCatatonia.Description".Translate(), false);
+            Settings.GetHandle<bool>("PauseGaveUp", "PauseGaveUp.DisplayName".Translate(), "PauseGaveUp.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseJailBreak", "PauseJailBreak.DisplayName".Translate(), "PauseJailBreak.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseMurderousRage", "PauseMurderousRage.DisplayName".Translate(), "PauseMurderousRage.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseRunWild", "PauseRunWild.DisplayName".Translate(), "PauseRunWild.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseSlaughter", "PauseSlaughter.DisplayName".Translate(), "PauseSlaughter.Description".Translate(), true);
 
-            PauseConfusion = Settings.GetHandle<bool>("PauseConfusion", "PauseConfusion.DisplayName".Translate(), "PauseConfusion.Description".Translate(), false);
-            PauseSocialFight = Settings.GetHandle<bool>("PauseSocialFight", "PauseSocialFight.DisplayName".Translate(), "PauseSocialFight.Description".Translate(), false);
+            Settings.GetHandle<bool>("PauseConfusion", "PauseConfusion.DisplayName".Translate(), "PauseConfusion.Description".Translate(), false);
+            Settings.GetHandle<bool>("PauseSocialFight", "PauseSocialFight.DisplayName".Translate(), "PauseSocialFight.Description".Translate(), false);
         }
 
 
