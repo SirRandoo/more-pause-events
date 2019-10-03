@@ -52,6 +52,7 @@ namespace More_Pause_Events
 
                     if (prey.Spawned && prey.Faction == RimWorld.Faction.OfPlayer && Find.TickManager.TicksGame == pawn.mindState.lastPredatorHuntingPlayerNotificationTick && prey.Position.InHorDistOf(pawn.Position, 60f))
                     {
+                        Log.Message("[MorePauseEvents] New predator hunt detected; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -70,8 +71,8 @@ namespace More_Pause_Events
 
                     if (enabled)
                     {
-                        HugsLibController
-                            .Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        Log.Message("[MorePauseEvents] Colonist binging on food; pausing game...");
+                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
             }
@@ -89,6 +90,7 @@ namespace More_Pause_Events
 
                     if (enabled)
                     {
+                        Log.Message("[MorePauseEvents] Colonist on insulting spree; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -108,6 +110,7 @@ namespace More_Pause_Events
 
                     if (enabled)
                     {
+                        Log.Message("[MorePauseEvents] Colonist hauling corpse to public place; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -124,6 +127,7 @@ namespace More_Pause_Events
 
                 if (enabled)
                 {
+                    Log.Message("[MorePauseEvents] Colonist on sadistic rage; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -141,6 +145,7 @@ namespace More_Pause_Events
 
                     if (enabled)
                     {
+                        Log.Message("[MorePauseEvents] Colonist going berserk; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -159,6 +164,7 @@ namespace More_Pause_Events
 
                     if (enabled)
                     {
+                        Log.Message("[MorePauseEvents] Colonist entering catatonia; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -175,6 +181,7 @@ namespace More_Pause_Events
 
                 if (enabled)
                 {
+                    Log.Message("[MorePauseEvents] Colonist giving up; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -190,6 +197,7 @@ namespace More_Pause_Events
 
                 if (enabled)
                 {
+                    Log.Message("[MorePauseEvents] Colonist encouraging prison break; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -205,6 +213,7 @@ namespace More_Pause_Events
 
                 if (enabled)
                 {
+                    Log.Message("[MorePauseEvents] Colonist on murderous rage; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -222,6 +231,7 @@ namespace More_Pause_Events
 
                     if (enabled)
                     {
+                        Log.Message("[MorePauseEvents] Colonist running wild; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -238,6 +248,7 @@ namespace More_Pause_Events
 
                 if (enabled)
                 {
+                    Log.Message("[MorePauseEvents] Colonist on slaughter spree; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -253,6 +264,7 @@ namespace More_Pause_Events
 
                 if (enabled)
                 {
+                    Log.Message("[MorePauseEvents] Colonist confused; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -268,25 +280,8 @@ namespace More_Pause_Events
 
                 if (enabled)
                 {
+                    Log.Message("[MorePauseEvents] Colonists in social fight; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(RimWorld.JobGiver_Manhunter), "TryGiveJob")]
-        public static class JobGiver_Manhunter_Postfix_TryGiveJob
-        {
-            [HarmonyPostfix]
-            public static void TryGiveJob(Pawn pawn, ref Verse.AI.Job __result)
-            {
-                if (__result != null)
-                {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseManhunter");
-
-                    if (enabled)
-                    {
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
-                    }
                 }
             }
         }
