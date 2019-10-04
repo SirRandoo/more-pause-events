@@ -13,6 +13,7 @@ namespace More_Pause_Events
 
         public override void DefsLoaded()
         {
+            // Mental breaks
             Settings.GetHandle<bool>("PausePredator", "PausePredator.DisplayName".Translate(), "PausePredator.Description".Translate(), false);
 
             Settings.GetHandle<bool>("PauseFoodBinge", "PauseFoodBinge.DisplayName".Translate(), "PauseFoodBinge.Description".Translate(), false);
@@ -31,6 +32,9 @@ namespace More_Pause_Events
 
             Settings.GetHandle<bool>("PauseConfusion", "PauseConfusion.DisplayName".Translate(), "PauseConfusion.Description".Translate(), false);
             Settings.GetHandle<bool>("PauseSocialFight", "PauseSocialFight.DisplayName".Translate(), "PauseSocialFight.Description".Translate(), false);
+
+            // Events
+            Settings.GetHandle<bool>("PauseTransportCrash", "PauseTransportCrash.DisplayName".Translate(), "PauseTransportCrash.Description".Translate(), true);
         }
 
 
@@ -282,6 +286,25 @@ namespace More_Pause_Events
                 {
                     Log.Message("[MorePauseEvents] Colonists in social fight; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(RimWorld.IncidentWorker_TransportPodCrash), "TryExecuteWorker")]
+        public static class IncidentWorker_TransportPodCrash_Postfix_TryExecuteWorker
+        {
+            [HarmonyPostfix]
+            public static void TryExecuteWorker(RimWorld.IncidentParms parms, ref bool __result)
+            {
+                if (__result)
+                {
+                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseTransportCrash");
+
+                    if (enabled)
+                    {
+                        Log.Message("[MorePauseEvents] Transport pod crashed; pausing game...");
+                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    }
                 }
             }
         }
