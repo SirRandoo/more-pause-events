@@ -36,6 +36,7 @@ namespace MorePauseEvents
 
             // Events
             Settings.GetHandle<bool>("PauseTransportCrash", "PauseTransportCrash.DisplayName".Translate(), "PauseTransportCrash.Description".Translate(), true);
+            Settings.GetHandle<bool>("PauseMaddened", "PauseMaddened.DisplayName".Translate(), "PauseMaddened.Description".Translate(), true);
         }
 
         public static void LogMessage(string message) => Log.Message(string.Format("[{0}] {1}", ID, message));
@@ -278,11 +279,26 @@ namespace MorePauseEvents
                     if (GetBoolSetting("PauseTransportCrash"))
                         LogMessage("Transport pod crashed; pausing game...");
                         Find.TickManager.Pause();
+        [HarmonyPatch(typeof(RimWorld.JobGiver_Manhunter), "TryGiveJob")]
+        public static class JobGiver_Manhunter_Postfix_TryGiveJob
+        {
+            public static int TickCache = -1;
 
-                    if (enabled)
+            [HarmonyPostfix]
+            public static void TryGiveJob(Pawn pawn, ref Verse.AI.Job __result)
+            {
+                if (__result != null)
+                {
+                    if (GetBoolSetting("PauseMaddened") && (Find.TickManager.TicksGame - TickCache) >= 2500)
                     {
-                        Log.Message("[MorePauseEvents] Transport pod crashed; pausing game...");
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        TickCache = Find.TickManager.TicksGame;
+
+                        LogMessage("Manhunter detected; pausing game...");
+                        Find.TickManager.Pause();
+                    }
+                }
+            }
+        }
                     }
                 }
             }
