@@ -58,8 +58,8 @@ namespace MorePauseEvents
 
                     if (prey.Spawned && prey.Faction == RimWorld.Faction.OfPlayer && Find.TickManager.TicksGame == pawn.mindState.lastPredatorHuntingPlayerNotificationTick && prey.Position.InHorDistOf(pawn.Position, 60f))
                     {
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                         LogMessage("New predator hunt detected; pausing game...");
+                        Find.TickManager.Pause();
                     }
                 }
             }
@@ -77,7 +77,7 @@ namespace MorePauseEvents
 
                     {
                         LogMessage("Colonist binging on food; pausing game...");
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        Find.TickManager.Pause();
                     }
                 }
             }
@@ -94,7 +94,7 @@ namespace MorePauseEvents
                     if (GetBoolSetting("PauseInsulting"))
                     {
                         LogMessage("Colonist on insulting spree; pausing game...");
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        Find.TickManager.Pause();
                     }
                 }
             }
@@ -112,7 +112,7 @@ namespace MorePauseEvents
                     if (GetBoolSetting("PauseCorpseObsession"))
                     {
                         LogMessage("Colonist hauling corpse to public place; pausing game...");
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        Find.TickManager.Pause();
                     }
                 }
             }
@@ -127,7 +127,7 @@ namespace MorePauseEvents
                 if (GetBoolSetting("PauseSadisticRage"))
                 {
                     LogMessage("Colonist on sadistic rage; pausing game...");
-                    HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    Find.TickManager.Pause();
                 }
             }
         }
@@ -143,7 +143,7 @@ namespace MorePauseEvents
                     if (GetBoolSetting("PauseBerserk"))
                     {
                         LogMessage("Colonist going berserk; pausing game...");
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        Find.TickManager.Pause();
                     }
                 }
             }
@@ -160,7 +160,7 @@ namespace MorePauseEvents
                     if (GetBoolSetting("PauseCatatonia"))
                     {
                         LogMessage("Colonist entering catatonia; pausing game...");
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        Find.TickManager.Pause();
                     }
                 }
             }
@@ -175,7 +175,7 @@ namespace MorePauseEvents
                 if (GetBoolSetting("PauseGaveUp"))
                 {
                     LogMessage("Colonist giving up; pausing game...");
-                    HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    Find.TickManager.Pause();
                 }
             }
         }
@@ -189,7 +189,7 @@ namespace MorePauseEvents
                 if (GetBoolSetting("PauseJailBreak"))
                 {
                     LogMessage("Colonist encouraging prison break; pausing game...");
-                    HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    Find.TickManager.Pause();
                 }
             }
         }
@@ -203,7 +203,7 @@ namespace MorePauseEvents
                 if (GetBoolSetting("PauseMurderousRage"))
                 {
                     LogMessage("Colonist on murderous rage; pausing game...");
-                    HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    Find.TickManager.Pause();
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace MorePauseEvents
                     if (GetBoolSetting("PauseRunWild"))
                     {
                         LogMessage("Colonist running wild; pausing game...");
-                        HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        Find.TickManager.Pause();
                     }
                 }
             }
@@ -234,7 +234,7 @@ namespace MorePauseEvents
                 if (GetBoolSetting("PauseSlaughter"))
                 {
                     LogMessage("Colonist on slaughter spree; pausing game...");
-                    HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    Find.TickManager.Pause();
                 }
             }
         }
@@ -248,7 +248,7 @@ namespace MorePauseEvents
                 if (GetBoolSetting("PauseConfusion"))
                 {
                     LogMessage("Colonist confused; pausing game...");
-                    HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    Find.TickManager.Pause();
                 }
             }
         }
@@ -261,8 +261,8 @@ namespace MorePauseEvents
             {
                 if (GetBoolSetting("PauseSocialFight"))
                 {
-                    HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     LogMessage("Colonists in social fight; pausing game...");
+                    Find.TickManager.Pause();
                 }
             }
         }
@@ -277,6 +277,7 @@ namespace MorePauseEvents
                 {
                     if (GetBoolSetting("PauseTransportCrash"))
                         LogMessage("Transport pod crashed; pausing game...");
+                        Find.TickManager.Pause();
 
                     if (enabled)
                     {
