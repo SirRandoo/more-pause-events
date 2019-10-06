@@ -5,11 +5,12 @@ using HugsLib.Settings;
 
 using Verse;
 
-namespace More_Pause_Events
+namespace MorePauseEvents
 {
-    public class More_Pause_Events : ModBase
+    public class MorePauseEvents : ModBase
     {
-        public override string ModIdentifier => "MorePauseEvents";
+        public static string ID = "MorePauseEvents";
+        public override string ModIdentifier => ID;
 
         public override void DefsLoaded()
         {
