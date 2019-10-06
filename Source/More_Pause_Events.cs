@@ -38,6 +38,8 @@ namespace MorePauseEvents
             Settings.GetHandle<bool>("PauseTransportCrash", "PauseTransportCrash.DisplayName".Translate(), "PauseTransportCrash.Description".Translate(), true);
         }
 
+        public static void LogMessage(string message) => Log.Message(string.Format("[{0}] {1}", ID, message));
+        public static SettingHandle<bool> GetBoolSetting(string setting) => HugsLibController.SettingsManager.GetModSettings(ID).GetHandle<bool>(setting);
 
         // Patches
         [HarmonyPatch(typeof(RimWorld.JobDriver_PredatorHunt), "CheckWarnPlayer")]
@@ -46,9 +48,8 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void CheckWarnPlayer(RimWorld.JobDriver_PredatorHunt __instance)
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PausePredator");
+                if (GetBoolSetting("PausePredator"))
 
-                if (enabled)
                 {
                     // This could probably be omitted, but better safe than sorry
                     Traverse i = Traverse.Create(__instance);
@@ -57,8 +58,8 @@ namespace MorePauseEvents
 
                     if (prey.Spawned && prey.Faction == RimWorld.Faction.OfPlayer && Find.TickManager.TicksGame == pawn.mindState.lastPredatorHuntingPlayerNotificationTick && prey.Position.InHorDistOf(pawn.Position, 60f))
                     {
-                        Log.Message("[MorePauseEvents] New predator hunt detected; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                        LogMessage("New predator hunt detected; pausing game...");
                     }
                 }
             }
@@ -72,11 +73,10 @@ namespace MorePauseEvents
             {
                 if (__result != null)
                 {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseFoodBinge");
+                    if (GetBoolSetting("PauseFoodBinge"))
 
-                    if (enabled)
                     {
-                        Log.Message("[MorePauseEvents] Colonist binging on food; pausing game...");
+                        LogMessage("Colonist binging on food; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -91,11 +91,9 @@ namespace MorePauseEvents
             {
                 if (__result != null)
                 {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseInsulting");
-
-                    if (enabled)
+                    if (GetBoolSetting("PauseInsulting"))
                     {
-                        Log.Message("[MorePauseEvents] Colonist on insulting spree; pausing game...");
+                        LogMessage("Colonist on insulting spree; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -111,11 +109,9 @@ namespace MorePauseEvents
             {
                 if (__result != null)
                 {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseCorpseObsession");
-
-                    if (enabled)
+                    if (GetBoolSetting("PauseCorpseObsession"))
                     {
-                        Log.Message("[MorePauseEvents] Colonist hauling corpse to public place; pausing game...");
+                        LogMessage("Colonist hauling corpse to public place; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -128,11 +124,9 @@ namespace MorePauseEvents
             [HarmonyPrefix]
             public static void PostStart()
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseSadisticRage");
-
-                if (enabled)
+                if (GetBoolSetting("PauseSadisticRage"))
                 {
-                    Log.Message("[MorePauseEvents] Colonist on sadistic rage; pausing game...");
+                    LogMessage("Colonist on sadistic rage; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -146,11 +140,9 @@ namespace MorePauseEvents
             {
                 if (__result != null)
                 {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseBerserk");
-
-                    if (enabled)
+                    if (GetBoolSetting("PauseBerserk"))
                     {
-                        Log.Message("[MorePauseEvents] Colonist going berserk; pausing game...");
+                        LogMessage("Colonist going berserk; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -165,11 +157,9 @@ namespace MorePauseEvents
             {
                 if (__result)
                 {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseCatatonia");
-
-                    if (enabled)
+                    if (GetBoolSetting("PauseCatatonia"))
                     {
-                        Log.Message("[MorePauseEvents] Colonist entering catatonia; pausing game...");
+                        LogMessage("Colonist entering catatonia; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -182,11 +172,9 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void PostStart()
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseGaveUp");
-
-                if (enabled)
+                if (GetBoolSetting("PauseGaveUp"))
                 {
-                    Log.Message("[MorePauseEvents] Colonist giving up; pausing game...");
+                    LogMessage("Colonist giving up; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -198,11 +186,9 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void PostStart()
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseJailBreak");
-
-                if (enabled)
+                if (GetBoolSetting("PauseJailBreak"))
                 {
-                    Log.Message("[MorePauseEvents] Colonist encouraging prison break; pausing game...");
+                    LogMessage("Colonist encouraging prison break; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -214,11 +200,9 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void PostStart()
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseMurderousRage");
-
-                if (enabled)
+                if (GetBoolSetting("PauseMurderousRage"))
                 {
-                    Log.Message("[MorePauseEvents] Colonist on murderous rage; pausing game...");
+                    LogMessage("Colonist on murderous rage; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -232,11 +216,9 @@ namespace MorePauseEvents
             {
                 if (__result)
                 {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseRunWild");
-
-                    if (enabled)
+                    if (GetBoolSetting("PauseRunWild"))
                     {
-                        Log.Message("[MorePauseEvents] Colonist running wild; pausing game...");
+                        LogMessage("Colonist running wild; pausing game...");
                         HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                     }
                 }
@@ -249,11 +231,9 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void PostStart()
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseSlaughter");
-
-                if (enabled)
+                if (GetBoolSetting("PauseSlaughter"))
                 {
-                    Log.Message("[MorePauseEvents] Colonist on slaughter spree; pausing game...");
+                    LogMessage("Colonist on slaughter spree; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -265,11 +245,9 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void PostStart()
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseConfusion");
-
-                if (enabled)
+                if (GetBoolSetting("PauseConfusion"))
                 {
-                    Log.Message("[MorePauseEvents] Colonist confused; pausing game...");
+                    LogMessage("Colonist confused; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
                 }
             }
@@ -281,12 +259,10 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void PostStart()
             {
-                SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseSocialFight");
-
-                if (enabled)
+                if (GetBoolSetting("PauseSocialFight"))
                 {
-                    Log.Message("[MorePauseEvents] Colonists in social fight; pausing game...");
                     HugsLibController.Instance.DoLater.DoNextTick(() => Find.TickManager.Pause());
+                    LogMessage("Colonists in social fight; pausing game...");
                 }
             }
         }
@@ -299,7 +275,8 @@ namespace MorePauseEvents
             {
                 if (__result)
                 {
-                    SettingHandle<bool> enabled = HugsLibController.SettingsManager.GetModSettings("MorePauseEvents").GetHandle<bool>("PauseTransportCrash");
+                    if (GetBoolSetting("PauseTransportCrash"))
+                        LogMessage("Transport pod crashed; pausing game...");
 
                     if (enabled)
                     {
