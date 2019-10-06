@@ -4,6 +4,9 @@
   <PausePredator.DisplayName>Predator attacks</PausePredator.DisplayName>
   <PausePredator.Description>If enabled, the mod will attempt to pause the game when a predator chooses to attack a colonist or tamed animal.</PausePredator.Description>
 
+  <PausePredatorLetter.DisplayName>Tamed animal letters</PausePredatorLetter.DisplayName>
+  <PausePredatorLetter.Description>If enabled, the mod will send a letter (the notifications on the right-side of the screen) when a predator is attacking a tamed animal.</PausePredatorLetter.Description>
+
   <PauseFoodBinge.DisplayName>Food binges</PauseFoodBinge.DisplayName>
   <PauseFoodBinge.Description>If enabled, the mod will attempt to pause the game when a colonist goes on a food binge.</PauseFoodBinge.Description>
 

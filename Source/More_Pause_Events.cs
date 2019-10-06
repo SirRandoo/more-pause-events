@@ -16,7 +16,8 @@ namespace MorePauseEvents
         public override void DefsLoaded()
         {
             // Mental breaks
-            Settings.GetHandle<bool>("PausePredator", "PausePredator.DisplayName".Translate(), "PausePredator.Description".Translate(), false);
+            var PausePredator = Settings.GetHandle<bool>("PausePredator", "PausePredator.DisplayName".Translate(), "PausePredator.Description".Translate(), false);
+            var PausePredatorLetter = Settings.GetHandle<bool>("PausePredatorLetter", "PausePredatorLetter.DisplayName".Translate(), "PausePredatorLetter.Description".Translate(), false);
 
             Settings.GetHandle<bool>("PauseFoodBinge", "PauseFoodBinge.DisplayName".Translate(), "PauseFoodBinge.Description".Translate(), false);
             Settings.GetHandle<bool>("PauseInsulting", "PauseInsulting.DisplayName".Translate(), "PauseInsulting.Description".Translate(), false);
@@ -44,6 +45,7 @@ namespace MorePauseEvents
             var PauseIdleJoy = Settings.GetHandle<bool>("PauseIdleJoy", "PauseIdleJoy.DisplayName".Translate(), "PauseIdleJoy.Description".Translate(), false);
             var PauseIdleJoyDelay = Settings.GetHandle<int>("PauseIdeJoyDelay", "PauseIdleJoyDelay.DisplayName".Translate(), "PauseIdleJoyDelay.Description".Translate(), 8, Validators.IntRangeValidator(1, 24));
 
+            PausePredatorLetter.VisibilityPredicate = () => PausePredator.Value;
             PauseIdleDelay.VisibilityPredicate = () => PauseIdle.Value;
             PauseIdleJoyDelay.VisibilityPredicate = () => PauseIdleJoy.Value;
         }
@@ -72,7 +74,7 @@ namespace MorePauseEvents
                         LogMessage("New predator hunt detected; pausing game...");
                         Find.TickManager.Pause();
 
-                        if (prey.RaceProps.Animal && RimWorld.PawnUtility.ShouldSendNotificationAbout(prey))
+                        if (prey.RaceProps.Animal && RimWorld.PawnUtility.ShouldSendNotificationAbout(prey) && GetBoolSetting("PausePredatorLetter").Value)
                         {
                             Find.LetterStack.ReceiveLetter("PausePredator.LetterLabel".Translate(pawn.LabelShort, prey.LabelDefinite(), pawn.Named("PREDATOR"), prey.Named("PREY")).CapitalizeFirst(), "PausePredator.LetterText".Translate(pawn.LabelIndefinite(), prey.LabelDefinite(), pawn.Named("PREDATOR"), prey.Named("PREY")).CapitalizeFirst(), RimWorld.LetterDefOf.NegativeEvent, new LookTargets(pawn));
                         }
