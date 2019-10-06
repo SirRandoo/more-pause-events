@@ -44,7 +44,7 @@
   <PauseSocialFight.Description>If enabled, the mod will attempt to pause the game when a colonist starts a social fight.</PauseSocialFight.Description>
 
   <PauseTransportCrash.DisplayName>Transport pod crashes</PauseTransportCrash.DisplayName>
-  <PauseTransportCrash.Description>If enabled, the mod will attempt ot pause the game when a transport pod crash occurs.</PauseTransportCrash.Description>
+  <PauseTransportCrash.Description>If enabled, the mod will attempt to pause the game when a transport pod crash occurs.</PauseTransportCrash.Description>
 
   <!-- Letters -->
   <PausePredator.LetterLabel>{PREDATOR_labelShort} hunting {PREY_definite}</PausePredator.LetterLabel>
