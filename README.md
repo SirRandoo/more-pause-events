@@ -19,6 +19,8 @@ Allows the users to specify certain events, like murderous rage, that'll pause w
 * Jail break
 * Confusion
 * Social fight
+* Mad animals
+* Idle pawns
 
 # "Frequently" Asked Questions
 
