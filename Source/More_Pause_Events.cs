@@ -10,6 +10,7 @@ namespace MorePauseEvents
     public class MorePauseEvents : ModBase
     {
         public static string ID = "MorePauseEvents";
+
         public override string ModIdentifier => ID;
 
         public override void DefsLoaded()
@@ -37,10 +38,20 @@ namespace MorePauseEvents
             // Events
             Settings.GetHandle<bool>("PauseTransportCrash", "PauseTransportCrash.DisplayName".Translate(), "PauseTransportCrash.Description".Translate(), true);
             Settings.GetHandle<bool>("PauseMaddened", "PauseMaddened.DisplayName".Translate(), "PauseMaddened.Description".Translate(), true);
+
+            var PauseIdle = Settings.GetHandle<bool>("PauseIdle", "PauseIdle.DisplayName".Translate(), "PauseIdle.Description".Translate(), false);
+            var PauseIdleDelay = Settings.GetHandle<int>("PauseIdleDelay", "PauseIdleDelay.DisplayName".Translate(), "PauseIdleDelay.Description".Translate(), 8, Validators.IntRangeValidator(1, 24));
+            var PauseIdleJoy = Settings.GetHandle<bool>("PauseIdleJoy", "PauseIdleJoy.DisplayName".Translate(), "PauseIdleJoy.Description".Translate(), false);
+            var PauseIdleJoyDelay = Settings.GetHandle<int>("PauseIdeJoyDelay", "PauseIdleJoyDelay.DisplayName".Translate(), "PauseIdleJoyDelay.Description".Translate(), 8, Validators.IntRangeValidator(1, 24));
+
+            PauseIdleDelay.VisibilityPredicate = () => PauseIdle.Value;
+            PauseIdleJoyDelay.VisibilityPredicate = () => PauseIdleJoy.Value;
         }
 
         public static void LogMessage(string message) => Log.Message(string.Format("[{0}] {1}", ID, message));
         public static SettingHandle<bool> GetBoolSetting(string setting) => HugsLibController.SettingsManager.GetModSettings(ID).GetHandle<bool>(setting);
+        public static SettingHandle<int> GetIntSetting(string setting) => HugsLibController.SettingsManager.GetModSettings(ID).GetHandle<int>(setting);
+
 
         // Patches
         [HarmonyPatch(typeof(RimWorld.JobDriver_PredatorHunt), "CheckWarnPlayer")]
@@ -50,7 +61,6 @@ namespace MorePauseEvents
             public static void CheckWarnPlayer(RimWorld.JobDriver_PredatorHunt __instance)
             {
                 if (GetBoolSetting("PausePredator"))
-
                 {
                     // This could probably be omitted, but better safe than sorry
                     Traverse i = Traverse.Create(__instance);
@@ -61,6 +71,7 @@ namespace MorePauseEvents
                     {
                         LogMessage("New predator hunt detected; pausing game...");
                         Find.TickManager.Pause();
+
                         if (prey.RaceProps.Animal && RimWorld.PawnUtility.ShouldSendNotificationAbout(prey))
                         {
                             Find.LetterStack.ReceiveLetter("PausePredator.LetterLabel".Translate(pawn.LabelShort, prey.LabelDefinite(), pawn.Named("PREDATOR"), prey.Named("PREY")).CapitalizeFirst(), "PausePredator.LetterText".Translate(pawn.LabelIndefinite(), prey.LabelDefinite(), pawn.Named("PREDATOR"), prey.Named("PREY")).CapitalizeFirst(), RimWorld.LetterDefOf.NegativeEvent, new LookTargets(pawn));
@@ -79,7 +90,6 @@ namespace MorePauseEvents
                 if (__result != null)
                 {
                     if (GetBoolSetting("PauseFoodBinge"))
-
                     {
                         LogMessage("Colonist binging on food; pausing game...");
                         Find.TickManager.Pause();
@@ -281,8 +291,14 @@ namespace MorePauseEvents
                 if (__result)
                 {
                     if (GetBoolSetting("PauseTransportCrash"))
+                    {
                         LogMessage("Transport pod crashed; pausing game...");
                         Find.TickManager.Pause();
+                    }
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(RimWorld.JobGiver_Manhunter), "TryGiveJob")]
         public static class JobGiver_Manhunter_Postfix_TryGiveJob
         {
@@ -303,6 +319,50 @@ namespace MorePauseEvents
                 }
             }
         }
+
+        [HarmonyPatch(typeof(Verse.AI.JobGiver_Idle), "TryGiveJob")]
+        public static class JobGiver_Idle_Postfix_TryGiveJob
+        {
+            public static int TickCache = -1;
+
+            [HarmonyPostfix]
+            public static void TryGiveJob(Pawn pawn, ref Verse.AI.Job __result)
+            {
+                if (__result != null)
+                {
+                    if (GetBoolSetting("PauseIdle") && (Find.TickManager.TicksGame - TickCache) >= (GetIntSetting("PauseIdleDelay").Value * 2500))
+                    {
+                        TickCache = Find.TickManager.TicksGame;
+
+                        LogMessage("Idle pawn detected; pausing game...");
+                        Find.TickManager.Pause();
+
+                        LogMessage("Sending idle pawn notification...");
+                        Find.LetterStack.ReceiveLetter("PauseIdle.LetterLabel".Translate(), "PauseIdle.LetterText".Translate(pawn.LabelShort).CapitalizeFirst(), RimWorld.LetterDefOf.NeutralEvent, new LookTargets(pawn));
+                    }
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(RimWorld.JobGiver_IdleJoy), "TryGiveJob")]
+        public static class JobGiver_IdleJoy_Postfix_TryGiveJob
+        {
+            public static int TickCache = -1;
+
+            [HarmonyPostfix]
+            public static void TryGiveJob(Pawn pawn, ref Verse.AI.Job __result)
+            {
+                if (__result != null)
+                {
+                    if (GetBoolSetting("PauseIdleJoy") && (Find.TickManager.TicksGame - TickCache) >= (GetIntSetting("PauseIdleJoyDelay").Value * 2500))
+                    {
+                        TickCache = Find.TickManager.TicksGame;
+
+                        LogMessage("Idle joy pawn detected; pausing game...");
+                        Find.TickManager.Pause();
+
+                        LogMessage("Send idle joy pawn notification...");
+                        Find.LetterStack.ReceiveLetter("PauseIdle.LetterLabel".Translate(), "PauseIdle.LetterText".Translate(pawn.LabelShort).CapitalizeFirst(), RimWorld.LetterDefOf.NeutralEvent, new LookTargets(pawn));
                     }
                 }
             }

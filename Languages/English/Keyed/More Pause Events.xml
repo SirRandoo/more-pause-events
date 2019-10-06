@@ -46,7 +46,23 @@
   <PauseTransportCrash.DisplayName>Transport pod crashes</PauseTransportCrash.DisplayName>
   <PauseTransportCrash.Description>If enabled, the mod will attempt to pause the game when a transport pod crash occurs.</PauseTransportCrash.Description>
 
+  <PauseMaddened.DisplayName>Mad animal</PauseMaddened.DisplayName>
+  <PauseMaddened.Description>If enabled, the mod will attempt to pause the game when a mad animal event occurs.</PauseMaddened.Description>
+
+  <PauseIdle.DisplayName>Idle pawn</PauseIdle.DisplayName>
+  <PauseIdle.Description>If enabled, the mod will attempt to pause the game when a pawn is idle.</PauseIdle.Description>
+  <PauseIdleDelay.DisplayName>Idle pawn delay</PauseIdleDelay.DisplayName>
+  <PauseIdleDelay.Description>The amount of time, in hours, between the previous pause and the next pause.  Once this time has elapsed, the mod will pause the game if another pawn is idle.</PauseIdleDelay.Description>
+
+  <PauseIdleJoy.DisplayName>Idle pawn (joy)</PauseIdleJoy.DisplayName>
+  <PauseIdleJoy.Description>If enabled, the mod will attempt to pause the game when a pawn is idle.  Idle joy occurs when pawns have recreational activities they can do, and no queued work.</PauseIdleJoy.Description>
+  <PauseIdleJoyDelay.DisplayName>Idle pawn delay (joy)</PauseIdleJoyDelay.DisplayName>
+  <PauseIdleJoyDelay.Description>The amount of time, in hours, between the previous pause and the next pause.  Once this time has elapsed, the mod will pause the game if another pawn is idle.</PauseIdleJoyDelay.Description>
+
   <!-- Letters -->
   <PausePredator.LetterLabel>{PREDATOR_labelShort} hunting {PREY_definite}</PausePredator.LetterLabel>
   <PausePredator.LetterText>{PREDATOR} is hunting {PREY_definite} for food!</PausePredator.LetterText>
+
+  <PauseIdle.LetterLabel>Idle Pawn</PauseIdle.LetterLabel>
+  <PauseIdle.LetterText>{0} is currently idle.\n\nYou should consider giving them something to do.</PauseIdle.LetterText>
 </LanguageData>
