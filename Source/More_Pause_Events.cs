@@ -61,6 +61,10 @@ namespace MorePauseEvents
                     {
                         LogMessage("New predator hunt detected; pausing game...");
                         Find.TickManager.Pause();
+                        if (prey.RaceProps.Animal && RimWorld.PawnUtility.ShouldSendNotificationAbout(prey))
+                        {
+                            Find.LetterStack.ReceiveLetter("PausePredator.LetterLabel".Translate(pawn.LabelShort, prey.LabelDefinite(), pawn.Named("PREDATOR"), prey.Named("PREY")).CapitalizeFirst(), "PausePredator.LetterText".Translate(pawn.LabelIndefinite(), prey.LabelDefinite(), pawn.Named("PREDATOR"), prey.Named("PREY")).CapitalizeFirst(), RimWorld.LetterDefOf.NegativeEvent, new LookTargets(pawn));
+                        }
                     }
                 }
             }
