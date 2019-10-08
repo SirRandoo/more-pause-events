@@ -164,6 +164,8 @@ namespace MorePauseEvents
                 {
                     if (GetBoolSetting("PauseBerserk") && (Find.TickManager.TicksGame - TickCache) >= (GetIntSetting("PauseBerserkDelay").Value * 2500))
                     {
+                        TickCache = Find.TickManager.TicksGame;
+
                         LogMessage("Colonist going berserk; pausing game...");
                         Find.TickManager.Pause();
                     }
