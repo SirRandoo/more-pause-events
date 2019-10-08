@@ -25,7 +25,6 @@ namespace MorePauseEvents
             Settings.GetHandle<bool>("PauseCorpseObsession", "PauseCorpseObsession.DisplayName".Translate(), "PauseCorpseObsession.Description".Translate(), true);
             Settings.GetHandle<bool>("PauseSadisticRage", "PauseSadisticRage.DisplayName".Translate(), "PauseSadisticRage.Description".Translate(), true);
 
-            Settings.GetHandle<bool>("PauseBerserk", "PauseBerserk.DisplayName".Translate(), "PauseBerserk.Description".Translate(), true);
             Settings.GetHandle<bool>("PauseCatatonia", "PauseCatatonia.DisplayName".Translate(), "PauseCatatonia.Description".Translate(), false);
             Settings.GetHandle<bool>("PauseGaveUp", "PauseGaveUp.DisplayName".Translate(), "PauseGaveUp.Description".Translate(), true);
             Settings.GetHandle<bool>("PauseJailBreak", "PauseJailBreak.DisplayName".Translate(), "PauseJailBreak.Description".Translate(), true);
@@ -44,10 +43,14 @@ namespace MorePauseEvents
             var PauseIdleDelay = Settings.GetHandle<int>("PauseIdleDelay", "PauseIdleDelay.DisplayName".Translate(), "PauseIdleDelay.Description".Translate(), 8, Validators.IntRangeValidator(1, 24));
             var PauseIdleJoy = Settings.GetHandle<bool>("PauseIdleJoy", "PauseIdleJoy.DisplayName".Translate(), "PauseIdleJoy.Description".Translate(), false);
             var PauseIdleJoyDelay = Settings.GetHandle<int>("PauseIdeJoyDelay", "PauseIdleJoyDelay.DisplayName".Translate(), "PauseIdleJoyDelay.Description".Translate(), 8, Validators.IntRangeValidator(1, 24));
+            var PauseBerserk = Settings.GetHandle<bool>("PauseBerserk", "PauseBerserk.DisplayName".Translate(), "PauseBerserk.Description".Translate(), false);
+            var PauseBerserkDelay = Settings.GetHandle<int>("PauseBerserkDelay", "PauseBerserkDelay.DisplayName".Translate(), "PauseBerserkDelay.Description".Translate(), 8, Validators.IntRangeValidator(1, 24));
+
 
             PausePredatorLetter.VisibilityPredicate = () => PausePredator.Value;
             PauseIdleDelay.VisibilityPredicate = () => PauseIdle.Value;
             PauseIdleJoyDelay.VisibilityPredicate = () => PauseIdleJoy.Value;
+            PauseBerserkDelay.VisibilityPredicate = () => PauseBerserk.Value;
         }
 
         public static void LogMessage(string message) => Log.Message(string.Format("[{0}] {1}", ID, message));
@@ -152,12 +155,14 @@ namespace MorePauseEvents
         [HarmonyPatch(typeof(RimWorld.JobGiver_Berserk), "TryGiveJob")]
         public static class JobGiver_Berserk_Postfix_TryGiveJob
         {
+            private static int TickCache = -1;
+
             [HarmonyPostfix]
             public static void TryGiveJob(Pawn pawn, ref Verse.AI.Job __result)
             {
                 if (__result != null)
                 {
-                    if (GetBoolSetting("PauseBerserk"))
+                    if (GetBoolSetting("PauseBerserk") && (Find.TickManager.TicksGame - TickCache) >= (GetIntSetting("PauseBerserkDelay").Value * 2500))
                     {
                         LogMessage("Colonist going berserk; pausing game...");
                         Find.TickManager.Pause();
