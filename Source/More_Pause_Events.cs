@@ -361,16 +361,16 @@ namespace MorePauseEvents
             [HarmonyPostfix]
             public static void TryGiveJob(Pawn pawn, ref Verse.AI.Job __result)
             {
-                if (__result != null && GetBoolSetting("PauseMaddened"))
+                if (__result != null && __result.CanBeginNow(pawn))
                 {
                     TickCache.TryGetValue(pawn.GetUniqueLoadID(), out int cached);
 
-                    if ((Find.TickManager.TicksGame - cached) >= 2500)
+                    if (GetBoolSetting("PauseMaddened") && Find.TickManager.TicksGame >= (cached + DaysInTicks))
                     {
 
                         TickCache[pawn.GetUniqueLoadID()] = Find.TickManager.TicksGame;
 
-                        LogMessage("Manhunter detected; pausing game...");
+                        LogMessage("Maddened animal detected; pausing game...");
                         Find.TickManager.Pause();
                     }
                 }
