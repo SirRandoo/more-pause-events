@@ -316,13 +316,22 @@ namespace MorePauseEvents
         [HarmonyPatch(typeof(RimWorld.JobGiver_SocialFighting), "TryGiveJob")]
         public static class JobGiver_SocialFighting__TryGiveJob_Postfix
         {
+            private static readonly Dictionary<string, int> TickCache = new Dictionary<string, int>();
+
             [HarmonyPostfix]
             public static void TryGiveJob(Pawn pawn, ref Verse.AI.Job __result)
             {
-                if (GetBoolSetting("PauseSocialFight") && __result.CanBeginNow(pawn))
+                if (__result != null && __result.CanBeginNow(pawn))
                 {
-                    LogMessage("Colonists in social fight; pausing game...");
-                    Find.TickManager.Pause();
+                    TickCache.TryGetValue(pawn.GetUniqueLoadID(), out int cached);
+
+                    if (GetBoolSetting("PauseSocialFight") && Find.TickManager.TicksGame >= (cached + DaysInTicks))
+                    {
+                        TickCache[pawn.GetUniqueLoadID()] = Find.TickManager.TicksGame;
+
+                        LogMessage("Colonists in social fight; pausing game...");
+                        Find.TickManager.Pause();
+                    }
                 }
             }
         }
