@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LanguageData>
+  <PauseDebug.DisplayName>Debug mode</PauseDebug.DisplayName>
+  <PauseDebug.Description>If enabled, the mod will output debugging information to the log.</PauseDebug.Description>
+
   <PausePredator.DisplayName>Predator attacks</PausePredator.DisplayName>
   <PausePredator.Description>If enabled, the mod will attempt to pause the game when a predator chooses to attack a colonist or tamed animal.</PausePredator.Description>
 
