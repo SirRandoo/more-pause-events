@@ -8,13 +8,12 @@ namespace SirRandoo.MPE
     {
         private static Vector2 ScrollPos = Vector2.zero;
 
-        public static bool CacheEnabled = true;
-
+        // Letters
         public static bool IdleLettersEnabled = false;
         public static bool PredatorLettersEnabled = false;
         public static bool SocialFightLettersEnabled = false;
 
-
+        // Events
         public static bool BerserkEnabled = false;
         public static bool CatatoniaEnabled = false;
         public static bool ConfusionEnabled = false;
@@ -44,12 +43,6 @@ namespace SirRandoo.MPE
             view.xMax *= 0.9f;
 
             panel.BeginScrollView(canvas, ref ScrollPos, ref view);
-
-
-            panel.Label("MPE.Settings.Groups.Cache".Translate());
-            panel.GapLine();
-            panel.Gap();
-            panel.CheckboxLabeled("MPE.Settings.Cache.Label".Translate(), ref CacheEnabled, "MPE.Settings.Cache.Tooltip".Translate());
 
 
             panel.Gap();
@@ -88,8 +81,6 @@ namespace SirRandoo.MPE
         public override void ExposeData()
         {
             base.ExposeData();
-
-            Scribe_Values.Look(ref CacheEnabled, "cache", true);
 
             Scribe_Values.Look(ref IdleLettersEnabled, "idleLetters", false);
             Scribe_Values.Look(ref PredatorLettersEnabled, "predatorLetters", false);

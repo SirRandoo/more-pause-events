@@ -18,14 +18,14 @@ namespace SirRandoo.MPE.Patches
             if (!pawn.Spawned) return;
             if (!pawn.health.hediffSet.HasHediff(HediffDefOf.CatatonicBreakdown)) return;
             if (!Settings.CatatoniaEnabled) return;
-            if ((Find.TickManager.TicksGame - Snapshot) < 60 && Settings.CacheEnabled) return;
+            if ((Find.TickManager.TicksGame - Snapshot) < 60) return;
 
 
             MPE.Debug(string.Format("{0} ticks passed since the last catatonic breakdown.", Find.TickManager.TicksGame - Snapshot));
             MPE.Info(string.Format("Pawn {0} is on a catatonic breakdown; pausing the game...", pawn.LabelDefinite()));
 
             Find.TickManager.Pause();
-            if (Settings.CacheEnabled) Snapshot = Find.TickManager.TicksGame;
+            Snapshot = Find.TickManager.TicksGame;
         }
     }
 }

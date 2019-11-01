@@ -48,9 +48,6 @@
     </Reference>
     <None Include="..\About\**" />
     <None Include="..\Defs\**" />
-    <None Include="..\Languages\English\Keyed\More Pause Events.xml" />
-    <None Include="..\Languages\English\Keyed\MPE_Cache.xml" />
-    <None Include="..\Languages\English\Keyed\MPE_Features.xml" />
     <None Include="..\Languages\English\Keyed\MPE_Letters.xml" />
     <None Include="..\Patches\**" />
   </ItemGroup>
@@ -63,18 +60,14 @@
     <Compile Include="Patches\JobGiver_HaulCorpseToPublicPlace.cs" />
     <Compile Include="Patches\JobGiver_Idle.cs" />
     <Compile Include="Patches\JobGiver_IdleJoy.cs" />
-    <Compile Include="Patches\JobGiver_InsultingSpree.cs" />
-    <Compile Include="Patches\JobGiver_Manhunter.cs" />
     <Compile Include="Patches\JobGiver_MurderousRage.cs" />
-    <Compile Include="Patches\JobGiver_SocialFighting.cs" />
-    <Compile Include="Patches\MentalState_Berserk.cs" />
-    <Compile Include="Patches\MentalState_WanderConfused.cs" />
+    <Compile Include="Patches\MentalState.cs" />
+    <Compile Include="Patches\MentalState_InsultingSpreeAll.cs" />
+    <Compile Include="Patches\MentalState_Manhunter.cs" />
     <Compile Include="Patches\MentalBreakWorker_Catatonic.cs" />
     <Compile Include="Patches\MentalBreakWorker_RunWild.cs" />
-    <Compile Include="Patches\MentalState_GiveUpExit.cs" />
-    <Compile Include="Patches\MentalState_Slaughterer.cs" />
-    <Compile Include="Patches\PrisonBreakUtility.cs" />
     <Compile Include="Patches\MentalState_SadisticRageTantrum.cs" />
+    <Compile Include="Patches\MentalState_SocialFight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
@@ -82,6 +75,9 @@
     <PackageReference Include="Lib.Harmony">
       <Version>1.2.0.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MPE_Settings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -99,14 +95,7 @@
     <StartArguments>-quicktest</StartArguments>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>echo F|xcopy "$(ProjectDir)..\About\About-$(ConfigurationName).xml" "$(TargetDir)..\About\About.xml" /C /Y /K /Q /D
-IF /I "$(ConfigurationName)" == "Release"; echo F|xcopy "$(ProjectDir)..\About\Preview.png" "$(TargetDir)..\About\Preview.png" /S /C /Y /K /Q /D
-IF /I "$(ConfigurationName)" == "Release"; xcopy "$(ProjectDir)..\Assemblies" "$(TargetDir)..\Assemblies" /S /C /Y /K /I /Q /D
-IF /I "$(ConfigurationName)" == "Release"; xcopy "$(ProjectDir)..\Defs" "$(TargetDir)..\Defs" /S /C /Y /K  /I /Q /D
-IF /I "$(ConfigurationName)" == "Release"; xcopy "$(ProjectDir)..\Patches" "$(TargetDir)..\Patches" /S /C /Y /K  /I /Q /D
-IF /I "$(ConfigurationName)" == "Release"; xcopy "$(ProjectDir)..\Languages" "$(TargetDir)..\Languages" /S /C /Y /K  /I /Q /D
-IF /I "$(ConfigurationName)" == "Release"; xcopy "$(ProjectDir)..\Sounds" "$(TargetDir)..\Sounds" /S /C /Y /K  /I /Q /D
-IF /I "$(ConfigurationName)" == "Release"; xcopy "$(ProjectDir)..\Textures" "$(TargetDir)..\Textures" /S /C /Y /K /I /Q /D
-IF /I "$(ConfigurationName)" == "Release"; IF EXIST "$(ProjectDir)..\LICENSE"; copy "$(ProjectDir)..\LICENSE" "$(TargetDir)..\LICENSE" /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -19,14 +19,14 @@ namespace SirRandoo.MPE.Patches
             if (!pawn.Spawned) return;
             if (!__result.CanBeginNow(pawn)) return;
             if (!Settings.IdleEnabled) return;
-            if ((Find.TickManager.TicksGame - Snapshot) < 60 && Settings.CacheEnabled) return;
+            if ((Find.TickManager.TicksGame - Snapshot) < 60) return;
 
 
             MPE.Debug(string.Format("{0} ticks passed since the last idle joy.", Find.TickManager.TicksGame - Snapshot));
             MPE.Info(string.Format("Pawn {0} is idle (joy); pausing the game...", pawn.LabelDefinite()));
 
             Find.TickManager.Pause();
-            if (Settings.CacheEnabled) Snapshot = Find.TickManager.TicksGame;
+            Snapshot = Find.TickManager.TicksGame;
 
             if (Settings.IdleLettersEnabled)
             {

@@ -13,10 +13,10 @@ namespace SirRandoo.MPE.Patches
         [HarmonyPostfix]
         public static void TryGiveJob(Pawn pawn, Job __result)
         {
+            if (!Settings.MurderousRageEnabled) return;
             if (__result == null || pawn == null) return;
             if (!pawn.Spawned) return;
             if (__result.def != JobDefOf.AttackMelee) return;
-            if (!Settings.MurderousRageEnabled) return;
             if (!PawnUtility.ShouldSendNotificationAbout(pawn)) return;
             if (!(pawn.MentalState is MentalState_MurderousRage)) return;
 

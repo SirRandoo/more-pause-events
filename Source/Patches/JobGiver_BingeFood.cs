@@ -21,14 +21,14 @@ namespace SirRandoo.MPE.Patches
             if (__result.def != JobDefOf.Ingest) return;
             if (!__result.CanBeginNow(pawn)) return;
             if (!Settings.EdibleBingesEnabled) return;
-            if ((Find.TickManager.TicksGame - Snapshot) < 60 && Settings.CacheEnabled) return;
+            if ((Find.TickManager.TicksGame - Snapshot) < 60) return;
 
 
             MPE.Debug(string.Format("{0} ticks passed since last food binge.", Find.TickManager.TicksGame - Snapshot));
             MPE.Info(string.Format("Pawn {0} is on a food binge; pausing the game...", pawn.LabelDefinite()));
 
             Find.TickManager.Pause();
-            if (Settings.CacheEnabled) Snapshot = Find.TickManager.TicksGame;
+            Snapshot = Find.TickManager.TicksGame;
         }
     }
 }
