@@ -27,9 +27,6 @@ Allows the users to specify certain events, like murderous rage, that'll pause w
 ### Does this mod have any incompatibilities?
 Maybe, but they haven't been reported yet.
 
-### Does this mod work with multiplayer?
-Not sure yet
-
 ### Why'd my game randomly pause?
 If this is happening solely with this mod, it could be because of predator events.
 If predator pausing is enabled, this mod doesn't modify the event to send a letter 

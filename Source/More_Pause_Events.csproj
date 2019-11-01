@@ -7,7 +7,7 @@
     <ProjectGuid>{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>More_Pause_Events</RootNamespace>
+    <RootNamespace>SirRandoo.MPE</RootNamespace>
     <AssemblyName>MorePauseEvents</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -32,17 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UnlimitedHugs.Rimworld.HugsLib.6.1.1\lib\net35\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="HugsLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\UnlimitedHugs.Rimworld.HugsLib.6.1.1\lib\net35\HugsLib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -57,12 +48,40 @@
     </Reference>
     <None Include="..\About\**" />
     <None Include="..\Defs\**" />
-    <None Include="..\Languages\**" />
+    <None Include="..\Languages\English\Keyed\More Pause Events.xml" />
+    <None Include="..\Languages\English\Keyed\MPE_Cache.xml" />
+    <None Include="..\Languages\English\Keyed\MPE_Features.xml" />
+    <None Include="..\Languages\English\Keyed\MPE_Letters.xml" />
     <None Include="..\Patches\**" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="More_Pause_Events.cs" />
+    <Compile Include="Cache.cs" />
+    <Compile Include="MPE.cs" />
+    <Compile Include="Patches\IncidentWorker_TransportPodCrash.cs" />
+    <Compile Include="Patches\JobGiver_GetFood.cs" />
+    <Compile Include="Patches\JobGiver_BingeFood.cs" />
+    <Compile Include="Patches\JobGiver_HaulCorpseToPublicPlace.cs" />
+    <Compile Include="Patches\JobGiver_Idle.cs" />
+    <Compile Include="Patches\JobGiver_IdleJoy.cs" />
+    <Compile Include="Patches\JobGiver_InsultingSpree.cs" />
+    <Compile Include="Patches\JobGiver_Manhunter.cs" />
+    <Compile Include="Patches\JobGiver_MurderousRage.cs" />
+    <Compile Include="Patches\JobGiver_SocialFighting.cs" />
+    <Compile Include="Patches\MentalState_Berserk.cs" />
+    <Compile Include="Patches\MentalState_WanderConfused.cs" />
+    <Compile Include="Patches\MentalBreakWorker_Catatonic.cs" />
+    <Compile Include="Patches\MentalBreakWorker_RunWild.cs" />
+    <Compile Include="Patches\MentalState_GiveUpExit.cs" />
+    <Compile Include="Patches\MentalState_Slaughterer.cs" />
+    <Compile Include="Patches\PrisonBreakUtility.cs" />
+    <Compile Include="Patches\MentalState_SadisticRageTantrum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony">
+      <Version>1.2.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
