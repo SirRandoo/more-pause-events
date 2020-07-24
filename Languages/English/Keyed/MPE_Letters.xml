@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <LanguageData>
-  <Letters.Predator.Label>{PREDATOR_labelShort} hunting {PREY_definite}</Letters.Predator.Label>
-  <Letters.Predator.Body>{PREDATOR} is hunting {PREY_definite} for food!</Letters.Predator.Body>
-
-  <Letters.Idle.Label>{PAWN_labelShort} is idle</Letters.Idle.Label>
-  <Letters.Idle.Body>{PAWN_labelShort} is currently idle!\n\nYou should consider giving them something to do.</Letters.Idle.Body>
-
-  <Letters.SocialFight.Label>{ASSAILANT_labelShort} is fighting with {VICTIM_labelShort}</Letters.SocialFight.Label>
-  <Letters.SocialFight.Body>{ASSAILANT_labelShort} started a social fight with {VICTIM_labelShort}!</Letters.SocialFight.Body>
+    <Letters.Predator.Label>{PREDATOR_labelShort} hunting {PREY_definite}</Letters.Predator.Label>
+    <Letters.Predator.Body>{PREDATOR} is hunting {PREY_definite} for food!</Letters.Predator.Body>
+    
+    <Letters.Idle.Label>{PAWN_labelShort} is idle</Letters.Idle.Label>
+    <Letters.Idle.Body>{PAWN_labelShort} is currently idle!\n\nYou should consider giving them something to do.
+    </Letters.Idle.Body>
+    
+    <Letters.SocialFight.Label>{ASSAILANT_labelShort} is fighting with {VICTIM_labelShort}</Letters.SocialFight.Label>
+    <Letters.SocialFight.Body>{ASSAILANT_labelShort} started a social fight with {VICTIM_labelShort}!
+    </Letters.SocialFight.Body>
 </LanguageData>

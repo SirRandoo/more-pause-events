@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Manifest>
-  <identifier>MorePauseEvents</identifier>
-  <version>1.6.0.0</version>
-  <manifestUri>https://raw.githubusercontent.com/SirRandoo/more-pause-events/master/About/Manifest.xml</manifestUri>
+    <identifier>MorePauseEvents</identifier>
+    <version>1.6.2.0</version>
+    <manifestUri>https://raw.githubusercontent.com/SirRandoo/more-pause-events/master/About/Manifest.xml</manifestUri>
 </Manifest>

@@ -4,7 +4,7 @@
     <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\More Pause Events\.git</exclude>
     <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\More Pause Events\.vs</exclude>
     <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\More Pause Events\MigrationBackup</exclude>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\More Pause Events\Source\bin</exclude>
-    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\More Pause Events\Source\obj</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\More Pause Events\More_Pause_Events.sln</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\More Pause Events\Source</exclude>
   </Excluded>
 </Configuration>

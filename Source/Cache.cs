@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SirRandoo.MPE
+namespace SirRandoo.PauseEvents
 {
     public class Cache
     {
