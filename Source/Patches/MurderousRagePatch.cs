@@ -21,17 +21,17 @@ namespace SirRandoo.MPE.Patches
                 return;
             }
 
-            if (!pawn?.Spawned != true)
+            if (pawn?.Spawned != true)
             {
                 return;
             }
 
-            if (__result?.targetA.Thing != null)
+            if (__result?.targetA.Thing == null)
             {
                 return;
             }
 
-            if (__result?.def != JobDefOf.AttackMelee)
+            if (__result.def != JobDefOf.AttackMelee)
             {
                 return;
             }
@@ -46,7 +46,7 @@ namespace SirRandoo.MPE.Patches
                 return;
             }
 
-            if (murderousRage.target != null && murderousRage.target != __result?.targetA.Thing as Pawn)
+            if (murderousRage.target != null && __result.targetA.Thing as Pawn != murderousRage.target)
             {
                 return;
             }
