@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using Verse;
 
-namespace SirRandoo.PauseEvents
+namespace SirRandoo.MPE
 {
     [UsedImplicitly]
     [StaticConstructorOnStartup]

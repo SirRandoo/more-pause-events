@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using RimWorld;
 using Verse;
 
-namespace SirRandoo.PauseEvents.Patches
+namespace SirRandoo.MPE.Patches
 {
     [UsedImplicitly]
     [HarmonyPatch(typeof(IncidentWorker_TransportPodCrash), "TryExecuteWorker")]

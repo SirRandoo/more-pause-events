@@ -5,7 +5,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace SirRandoo.PauseEvents.Patches
+namespace SirRandoo.MPE.Patches
 {
     [UsedImplicitly]
     [HarmonyPatch(typeof(JobGiver_IdleJoy), "TryGiveJob")]

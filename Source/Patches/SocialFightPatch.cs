@@ -3,7 +3,7 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using Verse.AI;
 
-namespace SirRandoo.PauseEvents.Patches
+namespace SirRandoo.MPE.Patches
 {
     [UsedImplicitly]
     [HarmonyPatch(typeof(MentalState_SocialFighting), "PostEnd")]

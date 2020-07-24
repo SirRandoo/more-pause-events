@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using HarmonyLib;
+﻿using HarmonyLib;
 using JetBrains.Annotations;
 using Verse;
 
-namespace SirRandoo.PauseEvents.Patches
+namespace SirRandoo.MPE.Patches
 {
     [UsedImplicitly]
     [HarmonyPatch(typeof(Game), nameof(Game.FinalizeInit))]

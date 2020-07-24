@@ -1,7 +1,7 @@
 ﻿using System;
 using Verse;
 
-namespace SirRandoo.PauseEvents
+namespace SirRandoo.MPE
 {
     public static class Logging
     {

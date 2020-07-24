@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using Verse;
 using Verse.AI;
 
-namespace SirRandoo.PauseEvents.Patches
+namespace SirRandoo.MPE.Patches
 {
     [UsedImplicitly]
     [HarmonyPatch(typeof(MentalState), "PostEnd")]

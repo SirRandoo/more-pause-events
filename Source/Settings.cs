@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace SirRandoo.PauseEvents
+namespace SirRandoo.MPE
 {
     public class Settings : ModSettings
     {
@@ -34,12 +34,11 @@ namespace SirRandoo.PauseEvents
 
         public static void DoWindowContents(Rect canvas)
         {
+            GUI.BeginGroup(canvas);
             var panel = new Listing_Standard();
+            var view = new Rect(0f, 0f, canvas.width - 16f, Text.LineHeight * 19f);
 
-            var view = new Rect(0f, 0f, canvas.width, 36f * 26f);
-            view.xMax *= 0.9f;
-
-            panel.BeginScrollView(canvas, ref _scrollPos, ref view);
+            panel.BeginScrollView(new Rect(0f, 0f, canvas.width, canvas.height), ref _scrollPos, ref view);
 
             panel.Gap();
             panel.Label("MPE.Settings.Groups.Letters".TranslateSimple());
@@ -149,6 +148,7 @@ namespace SirRandoo.PauseEvents
                 "MPE.Settings.Events.TransportCrash.Tooltip".TranslateSimple()
             );
 
+            GUI.EndGroup();
             panel.EndScrollView(ref view);
         }
 
