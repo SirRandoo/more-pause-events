@@ -28,7 +28,7 @@ namespace SirRandoo.MPE.Patches
                 return;
             }
 
-            if (!pawn?.Spawned ?? true)
+            if (pawn?.Spawned != true)
             {
                 return;
             }
