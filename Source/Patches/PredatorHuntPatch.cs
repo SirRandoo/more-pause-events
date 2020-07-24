@@ -32,7 +32,14 @@ namespace SirRandoo.MPE.Patches
                 return;
             }
 
-            if (prey.RaceProps.Animal && PawnUtility.ShouldSendNotificationAbout(prey))
+            if (!prey.RaceProps.Animal)
+            {
+                return;
+            }
+
+            Find.TickManager.Pause();
+
+            if (PawnUtility.ShouldSendNotificationAbout(prey))
             {
                 Find.LetterStack.ReceiveLetter(
                     "Letters.Predator.Label".Translate(
