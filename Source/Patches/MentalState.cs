@@ -42,6 +42,11 @@ namespace SirRandoo.MPE.Patches
                 case MentalState_SadisticRageTantrum _ when Mpe.Cache.SadisticRage.Contains(PID):
                     Mpe.Cache.SadisticRage.Remove(PID);
                     break;
+                case MentalState_Jailbreaker _ when Mpe.Cache.Jailbreaker.Contains(PID):
+                {
+                    Mpe.Cache.Jailbreaker.Remove(PID);
+                    break;
+                }
             }
         }
     }
@@ -66,49 +71,65 @@ namespace SirRandoo.MPE.Patches
             }
 
             string PID = __instance.pawn.GetUniqueLoadID();
+            var shouldPause = false;
 
             if (Settings.SlaughterEnabled
                 && __instance is MentalState_Slaughterer
                 && !Mpe.Cache.Slaughter.Contains(PID))
             {
                 Mpe.Cache.Slaughter.Add(PID);
-                Find.TickManager.Pause();
+                shouldPause = true;
             }
             else if (Settings.ConfusionEnabled
                      && __instance is MentalState_WanderConfused
                      && !Mpe.Cache.WanderConfused.Contains(PID))
             {
                 Mpe.Cache.WanderConfused.Add(PID);
-                Find.TickManager.Pause();
+                shouldPause = true;
             }
             else if (Settings.BerserkEnabled && __instance is MentalState_Berserk && !Mpe.Cache.Berserk.Contains(PID))
             {
                 Mpe.Cache.Berserk.Add(PID);
-                Find.TickManager.Pause();
+                shouldPause = true;
             }
             else if (Settings.GiveUpEnabled && __instance is MentalState_GiveUpExit)
             {
-                Find.TickManager.Pause();
+                shouldPause = true;
             }
             else if (Settings.InsultEnabled
                      && __instance is MentalState_InsultingSpree
                      && !Mpe.Cache.Insulting.Contains(PID))
             {
                 Mpe.Cache.Insulting.Add(PID);
-                Find.TickManager.Pause();
+                shouldPause = true;
             }
             else if (Settings.SocialFightEnabled
                      && __instance is MentalState_SocialFighting conv
                      && !Mpe.Cache.SocialFight.Contains(PID))
             {
                 Mpe.Cache.SocialFight.Add(PID);
-                Find.TickManager.Pause();
+                shouldPause = true;
 
                 if (!Mpe.Cache.SocialFight.Contains(conv.otherPawn.GetUniqueLoadID()))
                 {
                     Mpe.Cache.SocialFight.Add(conv.otherPawn.GetUniqueLoadID());
                 }
             }
+            else if (Settings.JailBreakEnabled
+                     && __instance is MentalState_Jailbreaker
+                     && !Mpe.Cache.Jailbreaker.Contains(PID))
+            {
+                Mpe.Cache.Jailbreaker.Add(PID);
+                shouldPause = true;
+            }
+
+
+            if (!shouldPause)
+            {
+                return;
+            }
+
+            Find.TickManager.Pause();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace SirRandoo.MPE
         public List<string> SadisticRage { get; } = new List<string>();
         public List<string> Manhunter { get; } = new List<string>();
         public List<string> Insulting { get; } = new List<string>();
+        public List<string> Jailbreaker { get; set; } = new List<string>();
         public List<string> SocialFight { get; } = new List<string>();
     }
 }
