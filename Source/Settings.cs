@@ -158,7 +158,7 @@ namespace SirRandoo.MPE
 
             Scribe_Values.Look(ref IdleLettersEnabled, "idleLetters");
             Scribe_Values.Look(ref PredatorLettersEnabled, "predatorLetters");
-            Scribe_Values.Look(ref SocialFightEnabled, "socialFightLetters");
+            Scribe_Values.Look(ref SocialFightLettersEnabled, "socialFightLetters2");
 
             Scribe_Values.Look(ref BerserkEnabled, "berserk");
             Scribe_Values.Look(ref CatatoniaEnabled, "catatonia");
