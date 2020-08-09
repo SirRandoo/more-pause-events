@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using HarmonyLib;
 using JetBrains.Annotations;
+using RimWorld;
 using Verse;
 using Verse.AI;
 
@@ -109,6 +110,19 @@ namespace SirRandoo.MPE.Patches
             {
                 Mpe.Cache.SocialFight.Add(PID);
                 shouldPause = true;
+                
+                if(Settings.SocialFightLettersEnabled)
+                {
+                    NamedArgument assailant = conv.pawn.Named("ASSAILANT");
+                    NamedArgument victim = conv.otherPawn.Named("VICTIM");
+                    
+                    Find.LetterStack.ReceiveLetter(
+                        "Letters.SocialFight.Label".Translate(assailant, victim),
+                        "Letters.SocialFight.Body".Translate(assailant, victim),
+                        LetterDefOf.ThreatSmall,
+                        new LookTargets(conv.pawn, conv.otherPawn)
+                    );
+                }
 
                 if (!Mpe.Cache.SocialFight.Contains(conv.otherPawn.GetUniqueLoadID()))
                 {
