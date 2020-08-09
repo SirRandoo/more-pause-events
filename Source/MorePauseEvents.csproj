@@ -44,8 +44,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\workshop\content\294100\2009463077\v1.1\Assemblies\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\..\workshop\content\294100\2038874626\1.2\Assemblies\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -127,6 +127,9 @@
     </Content>
     <Content Include="..\Languages\English\Keyed\MPE_Settings.xml">
       <Link>Languages\English\Keyed\MPE_Settings.xml</Link>
+    </Content>
+    <Content Include="..\LoadFolders.xml">
+      <Link>LoadFolders.xml</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
