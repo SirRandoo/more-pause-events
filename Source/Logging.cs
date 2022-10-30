@@ -25,11 +25,7 @@ namespace SirRandoo.MPE
 
         private static void Log(string level, string message, string color = null)
         {
-            Verse.Log.Message(
-                color.NullOrEmpty()
-                    ? $"{level.ToUpper()} {Mpe.Id} :: {message}"
-                    : $"<color=\"{color}\">{level.ToUpper()} {Mpe.Id} :: {message}</color>"
-            );
+            Verse.Log.Message(color.NullOrEmpty() ? $"{level.ToUpper()} {Mpe.Id} :: {message}" : $"<color=\"{color}\">{level.ToUpper()} {Mpe.Id} :: {message}</color>");
         }
 
         public static void Warn(string message)

@@ -27,25 +27,32 @@ namespace SirRandoo.MPE.Patches
             {
                 case MentalState_Slaughterer _ when Mpe.Cache.Slaughter.Contains(PID):
                     Mpe.Cache.Slaughter.Remove(PID);
+
                     break;
                 case MentalState_WanderConfused _ when Mpe.Cache.WanderConfused.Contains(PID):
                     Mpe.Cache.WanderConfused.Remove(PID);
+
                     break;
                 case MentalState_Berserk _ when Mpe.Cache.Berserk.Contains(PID):
                     Mpe.Cache.Berserk.Remove(PID);
+
                     break;
                 case MentalState_InsultingSpree _ when Mpe.Cache.Insulting.Contains(PID):
                     Mpe.Cache.Insulting.Remove(PID);
+
                     break;
                 case MentalState_Manhunter _ when Mpe.Cache.Manhunter.Contains(PID):
                     Mpe.Cache.Manhunter.Remove(PID);
+
                     break;
                 case MentalState_SadisticRageTantrum _ when Mpe.Cache.SadisticRage.Contains(PID):
                     Mpe.Cache.SadisticRage.Remove(PID);
+
                     break;
                 case MentalState_Jailbreaker _ when Mpe.Cache.Jailbreaker.Contains(PID):
                 {
                     Mpe.Cache.Jailbreaker.Remove(PID);
+
                     break;
                 }
             }
@@ -74,16 +81,12 @@ namespace SirRandoo.MPE.Patches
             string PID = __instance.pawn.GetUniqueLoadID();
             var shouldPause = false;
 
-            if (Settings.SlaughterEnabled
-                && __instance is MentalState_Slaughterer
-                && !Mpe.Cache.Slaughter.Contains(PID))
+            if (Settings.SlaughterEnabled && __instance is MentalState_Slaughterer && !Mpe.Cache.Slaughter.Contains(PID))
             {
                 Mpe.Cache.Slaughter.Add(PID);
                 shouldPause = true;
             }
-            else if (Settings.ConfusionEnabled
-                     && __instance is MentalState_WanderConfused
-                     && !Mpe.Cache.WanderConfused.Contains(PID))
+            else if (Settings.ConfusionEnabled && __instance is MentalState_WanderConfused && !Mpe.Cache.WanderConfused.Contains(PID))
             {
                 Mpe.Cache.WanderConfused.Add(PID);
                 shouldPause = true;
@@ -97,25 +100,21 @@ namespace SirRandoo.MPE.Patches
             {
                 shouldPause = true;
             }
-            else if (Settings.InsultEnabled
-                     && __instance is MentalState_InsultingSpree
-                     && !Mpe.Cache.Insulting.Contains(PID))
+            else if (Settings.InsultEnabled && __instance is MentalState_InsultingSpree && !Mpe.Cache.Insulting.Contains(PID))
             {
                 Mpe.Cache.Insulting.Add(PID);
                 shouldPause = true;
             }
-            else if (Settings.SocialFightEnabled
-                     && __instance is MentalState_SocialFighting conv
-                     && !Mpe.Cache.SocialFight.Contains(PID))
+            else if (Settings.SocialFightEnabled && __instance is MentalState_SocialFighting conv && !Mpe.Cache.SocialFight.Contains(PID))
             {
                 Mpe.Cache.SocialFight.Add(PID);
                 shouldPause = true;
-                
-                if(Settings.SocialFightLettersEnabled)
+
+                if (Settings.SocialFightLettersEnabled)
                 {
                     NamedArgument assailant = conv.pawn.Named("ASSAILANT");
                     NamedArgument victim = conv.otherPawn.Named("VICTIM");
-                    
+
                     Find.LetterStack.ReceiveLetter(
                         "Letters.SocialFight.Label".Translate(assailant, victim),
                         "Letters.SocialFight.Body".Translate(assailant, victim),
@@ -129,9 +128,7 @@ namespace SirRandoo.MPE.Patches
                     Mpe.Cache.SocialFight.Add(conv.otherPawn.GetUniqueLoadID());
                 }
             }
-            else if (Settings.JailBreakEnabled
-                     && __instance is MentalState_Jailbreaker
-                     && !Mpe.Cache.Jailbreaker.Contains(PID))
+            else if (Settings.JailBreakEnabled && __instance is MentalState_Jailbreaker && !Mpe.Cache.Jailbreaker.Contains(PID))
             {
                 Mpe.Cache.Jailbreaker.Add(PID);
                 shouldPause = true;

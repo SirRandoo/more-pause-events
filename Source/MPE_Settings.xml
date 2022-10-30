@@ -1,71 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <LanguageData>
-  <!-- Setting Group Names -->
-  <MPE.Settings.Groups.Events>Event Settings</MPE.Settings.Groups.Events>
-  <MPE.Settings.Groups.Letters>Letter Settings</MPE.Settings.Groups.Letters>
-
-
-  <!-- Letter Settings -->
-  <MPE.Settings.Letters.Idle.Label>Send a letter when a colonist is idle.</MPE.Settings.Letters.Idle.Label>
-  <MPE.Settings.Letters.Idle.Tooltip>If enabled, the mod will send a letter notification when a colonist is idle.</MPE.Settings.Letters.Idle.Tooltip>
-
-  <MPE.Settings.Letters.Predator.Label>Send a letter when a tamed animal is a predator's prey.</MPE.Settings.Letters.Predator.Label>
-  <MPE.Settings.Letters.Predator.Tooltip>If enabled, the mod will send a letter notification when an animal is being attacked by a predator.</MPE.Settings.Letters.Predator.Tooltip>
-
-  <MPE.Settings.Letters.SocialFight.Label>Send a letter when a colonist starts a social fight.</MPE.Settings.Letters.SocialFight.Label>
-  <MPE.Settings.Letters.SocialFight.Tooltip>If enabled, the mod will send a letter notification when a colonist starts a social fight.</MPE.Settings.Letters.SocialFight.Tooltip>
-
-
-  <!-- Event Settings -->
-  <MPE.Settings.Events.Berserk.Label>Pause when a colonist goes berserk.</MPE.Settings.Events.Berserk.Label>
-  <MPE.Settings.Events.Berserk.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes berserk.</MPE.Settings.Events.Berserk.Tooltip>
-
-  <MPE.Settings.Events.Catatonia.Label>Pause when a colonist goes catatonic.</MPE.Settings.Events.Catatonia.Label>
-  <MPE.Settings.Events.Catatonia.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes catatonic.</MPE.Settings.Events.Catatonia.Tooltip>
-
-  <MPE.Settings.Events.Confusion.Label>Pause when a colonist gets confused.</MPE.Settings.Events.Confusion.Label>
-  <MPE.Settings.Events.Confusion.Tooltip>If enabled, the mod will attempt to pause the game when a colonist gets confused.</MPE.Settings.Events.Confusion.Tooltip>
-
-  <MPE.Settings.Events.CorpseObsession.Label>Pause when a colonist becomes obsessed with corpses.</MPE.Settings.Events.CorpseObsession.Label>
-  <MPE.Settings.Events.CorpseObsession.Tooltip>If enabled, the mod will attempt to pause the game when a colonist becomes obsessed with corpses.</MPE.Settings.Events.CorpseObsession.Tooltip>
-
-  <MPE.Settings.Events.EdibleBinges.Label>Pause when a colonist goes on a food-related binge spree.</MPE.Settings.Events.EdibleBinges.Label>
-  <MPE.Settings.Events.EdibleBinges.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a food-related binge.</MPE.Settings.Events.EdibleBinges.Tooltip>
-
-  <MPE.Settings.Events.GiveUp.Label>Pause when a colonist gives up.</MPE.Settings.Events.GiveUp.Label>
-  <MPE.Settings.Events.GiveUp.Tooltip>If enabled, the mod will attempt to pause the game when a colonist gives up on the colony.</MPE.Settings.Events.GiveUp.Tooltip>
-
-  <MPE.Settings.Events.Idle.Label>Pause when a colonist goes idle.</MPE.Settings.Events.Idle.Label>
-  <MPE.Settings.Events.Idle.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes idle.</MPE.Settings.Events.Idle.Tooltip>
-
-  <MPE.Settings.Events.Insult.Label>Pause when a colonist goes on an insulting spree.</MPE.Settings.Events.Insult.Label>
-  <MPE.Settings.Events.Insult.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on an insulting spree.</MPE.Settings.Events.Insult.Tooltip>
-
-  <MPE.Settings.Events.JailBreak.Label>Pause when a colonist stages a prison break.</MPE.Settings.Events.JailBreak.Label>
-  <MPE.Settings.Events.JailBreak.Tooltip>If enabled, the mod will attempt to pause the game when a colonist stages a prison break.</MPE.Settings.Events.JailBreak.Tooltip>
-
-  <MPE.Settings.Events.MadAnimal.Label>Pause when an animal goes mad.</MPE.Settings.Events.MadAnimal.Label>
-  <MPE.Settings.Events.MadAnimal.Tooltip>If enabled, the mod will attempt to pause the game when an animal goes mad.</MPE.Settings.Events.MadAnimal.Tooltip>
-
-  <MPE.Settings.Events.MurderousRage.Label>Pause when a colonist goes on a murderous rage.</MPE.Settings.Events.MurderousRage.Label>
-  <MPE.Settings.Events.MurderousRage.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a murderous rage.</MPE.Settings.Events.MurderousRage.Tooltip>
-
-  <MPE.Settings.Events.Predator.Label>Pause when a predator targets a colonist, or tamed animal.</MPE.Settings.Events.Predator.Label>
-  <MPE.Settings.Events.Predator.Tooltip>If enabled, the mod will attempt to pause the game when a predator hunts a player-owned animal, or colonist.</MPE.Settings.Events.Predator.Tooltip>
-
-  <MPE.Settings.Events.RunWild.Label>Pause when a colonist runs wild.</MPE.Settings.Events.RunWild.Label>
-  <MPE.Settings.Events.RunWild.Tooltip>If enabled, the mod will attempt to pause the game when a colonist runs wild.</MPE.Settings.Events.RunWild.Tooltip>
-
-  <MPE.Settings.Events.SadisticRage.Label>Pause when a colonist goes on a sadistic rage.</MPE.Settings.Events.SadisticRage.Label>
-  <MPE.Settings.Events.SadisticRage.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a sadistic rage.</MPE.Settings.Events.SadisticRage.Tooltip>
-
-  <MPE.Settings.Events.Slaughter.Label>Pause when a colonist goes on a slaughter spree.</MPE.Settings.Events.Slaughter.Label>
-  <MPE.Settings.Events.Slaughter.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a slaughter spree.</MPE.Settings.Events.Slaughter.Tooltip>
-
-  <MPE.Settings.Events.SocialFight.Label>Pause when a colonist starts a social fight.</MPE.Settings.Events.SocialFight.Label>
-  <MPE.Settings.Events.SocialFight.Tooltip>If enabled, the mod will attempt to pause the game when a colonist starts a social fight.</MPE.Settings.Events.SocialFight.Tooltip>
-
-  <MPE.Settings.Events.TransportCrash.Label>Pause when a transport pod crash occurs.</MPE.Settings.Events.TransportCrash.Label>
-  <MPE.Settings.Events.TransportCrash.Tooltip>If enabled, the mod will attempt to pause the game when a transport pod crash occurs.</MPE.Settings.Events.TransportCrash.Tooltip>
+    <!-- Setting Group Names -->
+    <MPE.Settings.Groups.Events>Event Settings</MPE.Settings.Groups.Events>
+    <MPE.Settings.Groups.Letters>Letter Settings</MPE.Settings.Groups.Letters>
+    
+    
+    <!-- Letter Settings -->
+    <MPE.Settings.Letters.Idle.Label>Send a letter when a colonist is idle.</MPE.Settings.Letters.Idle.Label>
+    <MPE.Settings.Letters.Idle.Tooltip>If enabled, the mod will send a letter notification when a colonist is idle.</MPE.Settings.Letters.Idle.Tooltip>
+    
+    <MPE.Settings.Letters.Predator.Label>Send a letter when a tamed animal is a predator's prey.</MPE.Settings.Letters.Predator.Label>
+    <MPE.Settings.Letters.Predator.Tooltip>If enabled, the mod will send a letter notification when an animal is being attacked by a predator.</MPE.Settings.Letters.Predator.Tooltip>
+    
+    <MPE.Settings.Letters.SocialFight.Label>Send a letter when a colonist starts a social fight.</MPE.Settings.Letters.SocialFight.Label>
+    <MPE.Settings.Letters.SocialFight.Tooltip>If enabled, the mod will send a letter notification when a colonist starts a social fight.</MPE.Settings.Letters.SocialFight.Tooltip>
+    
+    
+    <!-- Event Settings -->
+    <MPE.Settings.Events.Berserk.Label>Pause when a colonist goes berserk.</MPE.Settings.Events.Berserk.Label>
+    <MPE.Settings.Events.Berserk.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes berserk.</MPE.Settings.Events.Berserk.Tooltip>
+    
+    <MPE.Settings.Events.Catatonia.Label>Pause when a colonist goes catatonic.</MPE.Settings.Events.Catatonia.Label>
+    <MPE.Settings.Events.Catatonia.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes catatonic.</MPE.Settings.Events.Catatonia.Tooltip>
+    
+    <MPE.Settings.Events.Confusion.Label>Pause when a colonist gets confused.</MPE.Settings.Events.Confusion.Label>
+    <MPE.Settings.Events.Confusion.Tooltip>If enabled, the mod will attempt to pause the game when a colonist gets confused.</MPE.Settings.Events.Confusion.Tooltip>
+    
+    <MPE.Settings.Events.CorpseObsession.Label>Pause when a colonist becomes obsessed with corpses.</MPE.Settings.Events.CorpseObsession.Label>
+    <MPE.Settings.Events.CorpseObsession.Tooltip>If enabled, the mod will attempt to pause the game when a colonist becomes obsessed with corpses.</MPE.Settings.Events.CorpseObsession.Tooltip>
+    
+    <MPE.Settings.Events.EdibleBinges.Label>Pause when a colonist goes on a food-related binge spree.</MPE.Settings.Events.EdibleBinges.Label>
+    <MPE.Settings.Events.EdibleBinges.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a food-related binge.</MPE.Settings.Events.EdibleBinges.Tooltip>
+    
+    <MPE.Settings.Events.GiveUp.Label>Pause when a colonist gives up.</MPE.Settings.Events.GiveUp.Label>
+    <MPE.Settings.Events.GiveUp.Tooltip>If enabled, the mod will attempt to pause the game when a colonist gives up on the colony.</MPE.Settings.Events.GiveUp.Tooltip>
+    
+    <MPE.Settings.Events.Idle.Label>Pause when a colonist goes idle.</MPE.Settings.Events.Idle.Label>
+    <MPE.Settings.Events.Idle.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes idle.</MPE.Settings.Events.Idle.Tooltip>
+    
+    <MPE.Settings.Events.Insult.Label>Pause when a colonist goes on an insulting spree.</MPE.Settings.Events.Insult.Label>
+    <MPE.Settings.Events.Insult.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on an insulting spree.</MPE.Settings.Events.Insult.Tooltip>
+    
+    <MPE.Settings.Events.JailBreak.Label>Pause when a colonist stages a prison break.</MPE.Settings.Events.JailBreak.Label>
+    <MPE.Settings.Events.JailBreak.Tooltip>If enabled, the mod will attempt to pause the game when a colonist stages a prison break.</MPE.Settings.Events.JailBreak.Tooltip>
+    
+    <MPE.Settings.Events.MadAnimal.Label>Pause when an animal goes mad.</MPE.Settings.Events.MadAnimal.Label>
+    <MPE.Settings.Events.MadAnimal.Tooltip>If enabled, the mod will attempt to pause the game when an animal goes mad.</MPE.Settings.Events.MadAnimal.Tooltip>
+    
+    <MPE.Settings.Events.MurderousRage.Label>Pause when a colonist goes on a murderous rage.</MPE.Settings.Events.MurderousRage.Label>
+    <MPE.Settings.Events.MurderousRage.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a murderous rage.</MPE.Settings.Events.MurderousRage.Tooltip>
+    
+    <MPE.Settings.Events.Predator.Label>Pause when a predator targets a colonist, or tamed animal.</MPE.Settings.Events.Predator.Label>
+    <MPE.Settings.Events.Predator.Tooltip>If enabled, the mod will attempt to pause the game when a predator hunts a player-owned animal, or colonist.</MPE.Settings.Events.Predator.Tooltip>
+    
+    <MPE.Settings.Events.RunWild.Label>Pause when a colonist runs wild.</MPE.Settings.Events.RunWild.Label>
+    <MPE.Settings.Events.RunWild.Tooltip>If enabled, the mod will attempt to pause the game when a colonist runs wild.</MPE.Settings.Events.RunWild.Tooltip>
+    
+    <MPE.Settings.Events.SadisticRage.Label>Pause when a colonist goes on a sadistic rage.</MPE.Settings.Events.SadisticRage.Label>
+    <MPE.Settings.Events.SadisticRage.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a sadistic rage.</MPE.Settings.Events.SadisticRage.Tooltip>
+    
+    <MPE.Settings.Events.Slaughter.Label>Pause when a colonist goes on a slaughter spree.</MPE.Settings.Events.Slaughter.Label>
+    <MPE.Settings.Events.Slaughter.Tooltip>If enabled, the mod will attempt to pause the game when a colonist goes on a slaughter spree.</MPE.Settings.Events.Slaughter.Tooltip>
+    
+    <MPE.Settings.Events.SocialFight.Label>Pause when a colonist starts a social fight.</MPE.Settings.Events.SocialFight.Label>
+    <MPE.Settings.Events.SocialFight.Tooltip>If enabled, the mod will attempt to pause the game when a colonist starts a social fight.</MPE.Settings.Events.SocialFight.Tooltip>
+    
+    <MPE.Settings.Events.TransportCrash.Label>Pause when a transport pod crash occurs.</MPE.Settings.Events.TransportCrash.Label>
+    <MPE.Settings.Events.TransportCrash.Tooltip>If enabled, the mod will attempt to pause the game when a transport pod crash occurs.</MPE.Settings.Events.TransportCrash.Tooltip>
 </LanguageData>

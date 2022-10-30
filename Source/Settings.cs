@@ -38,21 +38,20 @@ namespace SirRandoo.MPE
             var panel = new Listing_Standard();
             var view = new Rect(0f, 0f, canvas.width - 16f, Text.LineHeight * 19f);
 
-            panel.BeginScrollView(new Rect(0f, 0f, canvas.width, canvas.height), ref _scrollPos, ref view);
+            panel.Begin(canvas);
+            _scrollPos = GUI.BeginScrollView(new Rect(0f, 0f, canvas.width, canvas.height), _scrollPos, view);
 
             panel.Gap();
             panel.Label("MPE.Settings.Groups.Letters".TranslateSimple());
             panel.GapLine();
-            panel.CheckboxLabeled(
-                "MPE.Settings.Letters.Idle.Label".TranslateSimple(),
-                ref IdleLettersEnabled,
-                "MPE.Settings.Letters.Idle.Tooltip".TranslateSimple()
-            );
+            panel.CheckboxLabeled("MPE.Settings.Letters.Idle.Label".TranslateSimple(), ref IdleLettersEnabled, "MPE.Settings.Letters.Idle.Tooltip".TranslateSimple());
+
             panel.CheckboxLabeled(
                 "MPE.Settings.Letters.Predator.Label".TranslateSimple(),
                 ref PredatorLettersEnabled,
                 "MPE.Settings.Letters.Predator.Tooltip".TranslateSimple()
             );
+
             panel.CheckboxLabeled(
                 "MPE.Settings.Letters.SocialFight.Label".TranslateSimple(),
                 ref SocialFightLettersEnabled,
@@ -62,94 +61,54 @@ namespace SirRandoo.MPE
             panel.Gap();
             panel.Label("MPE.Settings.Groups.Events".TranslateSimple());
             panel.GapLine();
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.Berserk.Label".TranslateSimple(),
-                ref BerserkEnabled,
-                "MPE.Settings.Events.Berserk.Tooltip".TranslateSimple()
-            );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.Catatonia.Label".TranslateSimple(),
-                ref CatatoniaEnabled,
-                "MPE.Settings.Events.Catatonia.Tooltip".TranslateSimple()
-            );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.Confusion.Label".TranslateSimple(),
-                ref ConfusionEnabled,
-                "MPE.Settings.Events.Confusion.Tooltip".TranslateSimple()
-            );
+            panel.CheckboxLabeled("MPE.Settings.Events.Berserk.Label".TranslateSimple(), ref BerserkEnabled, "MPE.Settings.Events.Berserk.Tooltip".TranslateSimple());
+            panel.CheckboxLabeled("MPE.Settings.Events.Catatonia.Label".TranslateSimple(), ref CatatoniaEnabled, "MPE.Settings.Events.Catatonia.Tooltip".TranslateSimple());
+            panel.CheckboxLabeled("MPE.Settings.Events.Confusion.Label".TranslateSimple(), ref ConfusionEnabled, "MPE.Settings.Events.Confusion.Tooltip".TranslateSimple());
+
             panel.CheckboxLabeled(
                 "MPE.Settings.Events.CorpseObsession.Label".TranslateSimple(),
                 ref CorpseObsessionEnabled,
                 "MPE.Settings.Events.CorpseObsession.Tooltip".TranslateSimple()
             );
+
             panel.CheckboxLabeled(
                 "MPE.Settings.Events.EdibleBinges.Label".TranslateSimple(),
                 ref EdibleBingesEnabled,
                 "MPE.Settings.Events.EdibleBinges.Tooltip".TranslateSimple()
             );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.GiveUp.Label".TranslateSimple(),
-                ref GiveUpEnabled,
-                "MPE.Settings.Events.GiveUp.Tooltip".TranslateSimple()
-            );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.Idle.Label".TranslateSimple(),
-                ref IdleEnabled,
-                "MPE.Settings.Events.Idle.Tooltip".TranslateSimple()
-            );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.Insult.Label".TranslateSimple(),
-                ref InsultEnabled,
-                "MPE.Settings.Events.Insult.Tooltip".TranslateSimple()
-            );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.JailBreak.Label".TranslateSimple(),
-                ref JailBreakEnabled,
-                "MPE.Settings.Events.JailBreak.Tooltip".TranslateSimple()
-            );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.MadAnimal.Label".TranslateSimple(),
-                ref MadAnimalEnabled,
-                "MPE.Settings.Events.MadAnimal.Tooltip".TranslateSimple()
-            );
+
+            panel.CheckboxLabeled("MPE.Settings.Events.GiveUp.Label".TranslateSimple(), ref GiveUpEnabled, "MPE.Settings.Events.GiveUp.Tooltip".TranslateSimple());
+            panel.CheckboxLabeled("MPE.Settings.Events.Idle.Label".TranslateSimple(), ref IdleEnabled, "MPE.Settings.Events.Idle.Tooltip".TranslateSimple());
+            panel.CheckboxLabeled("MPE.Settings.Events.Insult.Label".TranslateSimple(), ref InsultEnabled, "MPE.Settings.Events.Insult.Tooltip".TranslateSimple());
+            panel.CheckboxLabeled("MPE.Settings.Events.JailBreak.Label".TranslateSimple(), ref JailBreakEnabled, "MPE.Settings.Events.JailBreak.Tooltip".TranslateSimple());
+            panel.CheckboxLabeled("MPE.Settings.Events.MadAnimal.Label".TranslateSimple(), ref MadAnimalEnabled, "MPE.Settings.Events.MadAnimal.Tooltip".TranslateSimple());
+
             panel.CheckboxLabeled(
                 "MPE.Settings.Events.MurderousRage.Label".TranslateSimple(),
                 ref MurderousRageEnabled,
                 "MPE.Settings.Events.MurderousRage.Tooltip".TranslateSimple()
             );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.Predator.Label".TranslateSimple(),
-                ref PredatorEnabled,
-                "MPE.Settings.Events.Predator.Tooltip".TranslateSimple()
-            );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.RunWild.Label".TranslateSimple(),
-                ref RunWildEnabled,
-                "MPE.Settings.Events.RunWild.Tooltip".TranslateSimple()
-            );
+
+            panel.CheckboxLabeled("MPE.Settings.Events.Predator.Label".TranslateSimple(), ref PredatorEnabled, "MPE.Settings.Events.Predator.Tooltip".TranslateSimple());
+            panel.CheckboxLabeled("MPE.Settings.Events.RunWild.Label".TranslateSimple(), ref RunWildEnabled, "MPE.Settings.Events.RunWild.Tooltip".TranslateSimple());
+
             panel.CheckboxLabeled(
                 "MPE.Settings.Events.SadisticRage.Label".TranslateSimple(),
                 ref SadisticRageEnabled,
                 "MPE.Settings.Events.SadisticRage.Tooltip".TranslateSimple()
             );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.Slaughter.Label".TranslateSimple(),
-                ref SlaughterEnabled,
-                "MPE.Settings.Events.Slaughter.Tooltip".TranslateSimple()
-            );
+
+            panel.CheckboxLabeled("MPE.Settings.Events.Slaughter.Label".TranslateSimple(), ref SlaughterEnabled, "MPE.Settings.Events.Slaughter.Tooltip".TranslateSimple());
+
             panel.CheckboxLabeled(
                 "MPE.Settings.Events.SocialFight.Label".TranslateSimple(),
                 ref SocialFightEnabled,
                 "MPE.Settings.Events.SocialFight.Tooltip".TranslateSimple()
             );
-            panel.CheckboxLabeled(
-                "MPE.Settings.Events.TransportCrash.Label".TranslateSimple(),
-                ref TransportCrashEnabled,
-                "MPE.Settings.Events.TransportCrash.Tooltip".TranslateSimple()
-            );
 
             GUI.EndGroup();
-            panel.EndScrollView(ref view);
+            panel.End();
+            GUI.EndScrollView();
         }
 
         public override void ExposeData()

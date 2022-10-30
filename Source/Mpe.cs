@@ -42,9 +42,6 @@ namespace SirRandoo.MPE
             Settings.DoWindowContents(inRect);
         }
 
-        public override string SettingsCategory()
-        {
-            return Id;
-        }
+        public override string SettingsCategory() => Id;
     }
 }
