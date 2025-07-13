@@ -2,17 +2,16 @@
 using JetBrains.Annotations;
 using Verse;
 
-namespace SirRandoo.MPE.Patches
+namespace SirRandoo.MPE.Patches;
+
+[UsedImplicitly]
+[HarmonyPatch(typeof(Game), nameof(Game.FinalizeInit))]
+public static class GameEndPatch
 {
     [UsedImplicitly]
-    [HarmonyPatch(typeof(Game), nameof(Game.FinalizeInit))]
-    public static class GameEndPatch
+    [HarmonyFinalizer]
+    public static void Finalizer()
     {
-        [UsedImplicitly]
-        [HarmonyFinalizer]
-        public static void Finalizer()
-        {
-            Mpe.Cache = new Cache();
-        }
+        Mpe.Cache = new Cache();
     }
 }

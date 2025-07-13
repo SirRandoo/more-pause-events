@@ -4,49 +4,25 @@ using JetBrains.Annotations;
 using Verse;
 using Verse.AI;
 
-namespace SirRandoo.MPE.Patches
+namespace SirRandoo.MPE.Patches;
+
+[UsedImplicitly]
+[HarmonyPatch(typeof(MentalState_TantrumRandom), methodName: "PostStart")]
+public static class SadisticRagePatch
 {
     [UsedImplicitly]
-    [HarmonyPatch(typeof(MentalState_TantrumRandom), "PostStart")]
-    public static class SadisticRagePatch
+    [HarmonyPostfix]
+    [SuppressMessage(category: "ReSharper", checkId: "InconsistentNaming")]
+    public static void PostStart(MentalState_TantrumRandom __instance)
     {
-        [UsedImplicitly]
-        [HarmonyPostfix]
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public static void PostStart(MentalState_TantrumRandom __instance)
-        {
-            if (!Settings.SadisticRageEnabled)
-            {
-                return;
-            }
+        if (!Settings.SadisticRageEnabled) return;
+        if (__instance?.target == null || __instance.pawn == null) return;
+        if (!__instance.pawn.Spawned) return;
+        if (__instance.pawn.MentalState is not MentalState_SadisticRageTantrum) return;
+        if (__instance.Age > 150) return;
+        if (Mpe.Cache.SadisticRage.Contains(__instance.pawn.GetUniqueLoadID())) return;
 
-            if (__instance?.target == null || __instance.pawn == null)
-            {
-                return;
-            }
-
-            if (!__instance.pawn.Spawned)
-            {
-                return;
-            }
-
-            if (!(__instance.pawn.MentalState is MentalState_SadisticRageTantrum))
-            {
-                return;
-            }
-
-            if (__instance.Age > 150)
-            {
-                return;
-            }
-
-            if (Mpe.Cache.SadisticRage.Contains(__instance.pawn.GetUniqueLoadID()))
-            {
-                return;
-            }
-
-            Mpe.Cache.SadisticRage.Add(__instance.pawn.GetUniqueLoadID());
-            Find.TickManager.Pause();
-        }
+        Mpe.Cache.SadisticRage.Add(__instance.pawn.GetUniqueLoadID());
+        Find.TickManager.Pause();
     }
 }

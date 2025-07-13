@@ -4,34 +4,22 @@ using JetBrains.Annotations;
 using Verse;
 using Verse.AI;
 
-namespace SirRandoo.MPE.Patches
+namespace SirRandoo.MPE.Patches;
+
+[UsedImplicitly]
+[HarmonyPatch(typeof(MentalState_Manhunter), methodName: "PostStart")]
+public static class ManhunterPatch
 {
     [UsedImplicitly]
-    [HarmonyPatch(typeof(MentalState_Manhunter), "PostStart")]
-    public static class ManhunterPatch
+    [HarmonyPostfix]
+    [SuppressMessage(category: "ReSharper", checkId: "InconsistentNaming")]
+    public static void PostStart(MentalState_Manhunter __instance)
     {
-        [UsedImplicitly]
-        [HarmonyPostfix]
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public static void PostStart(MentalState_Manhunter __instance)
-        {
-            if (!Settings.MadAnimalEnabled)
-            {
-                return;
-            }
+        if (!Settings.MadAnimalEnabled) return;
+        if (__instance?.pawn?.Spawned != true) return;
+        if (Mpe.Cache.Manhunter.Contains(__instance.pawn.GetUniqueLoadID())) return;
 
-            if (__instance?.pawn?.Spawned != true)
-            {
-                return;
-            }
-
-            if (Mpe.Cache.Manhunter.Contains(__instance.pawn.GetUniqueLoadID()))
-            {
-                return;
-            }
-
-            Mpe.Cache.Manhunter.Add(__instance.pawn.GetUniqueLoadID());
-            Find.TickManager.Pause();
-        }
+        Mpe.Cache.Manhunter.Add(__instance.pawn.GetUniqueLoadID());
+        Find.TickManager.Pause();
     }
 }

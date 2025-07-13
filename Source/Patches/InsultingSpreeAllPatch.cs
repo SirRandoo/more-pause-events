@@ -4,39 +4,23 @@ using JetBrains.Annotations;
 using Verse;
 using Verse.AI;
 
-namespace SirRandoo.MPE.Patches
+namespace SirRandoo.MPE.Patches;
+
+[UsedImplicitly]
+[HarmonyPatch(typeof(MentalState_InsultingSpreeAll), methodName: "PostStart")]
+public static class InsultingSpreeAllPatch
 {
     [UsedImplicitly]
-    [HarmonyPatch(typeof(MentalState_InsultingSpreeAll), "PostStart")]
-    public static class InsultingSpreeAllPatch
+    [HarmonyPostfix]
+    [SuppressMessage(category: "ReSharper", checkId: "InconsistentNaming")]
+    public static void PostStart(MentalState_InsultingSpreeAll __instance)
     {
-        [UsedImplicitly]
-        [HarmonyPostfix]
-        [SuppressMessage("ReSharper", "InconsistentNaming")]
-        public static void PostStart(MentalState_InsultingSpreeAll __instance)
-        {
-            if (!Settings.InsultEnabled)
-            {
-                return;
-            }
+        if (!Settings.InsultEnabled) return;
+        if (__instance?.pawn?.Spawned != true) return;
+        if (__instance.Age > 150) return;
+        if (Mpe.Cache.Insulting.Contains(__instance.pawn.GetUniqueLoadID())) return;
 
-            if (__instance?.pawn?.Spawned != true)
-            {
-                return;
-            }
-
-            if (__instance.Age > 150)
-            {
-                return;
-            }
-
-            if (Mpe.Cache.Insulting.Contains(__instance.pawn.GetUniqueLoadID()))
-            {
-                return;
-            }
-
-            Mpe.Cache.Insulting.Add(__instance.pawn.GetUniqueLoadID());
-            Find.TickManager.Pause();
-        }
+        Mpe.Cache.Insulting.Add(__instance.pawn.GetUniqueLoadID());
+        Find.TickManager.Pause();
     }
 }

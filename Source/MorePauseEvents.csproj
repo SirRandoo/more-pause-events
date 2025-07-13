@@ -1,44 +1,45 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>net48</TargetFramework>
-    <RootNamespace>SirRandoo.MPE</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\1.5\Assemblies</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\1.5\Assemblies</OutputPath>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="..\Defs\**" />
-    <None Include="..\Patches\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\About\About.xml">
-      <Link>About\About.xml</Link>
-    </Content>
-    <Content Include="..\About\Preview.png">
-      <Link>About\Preview.png</Link>
-    </Content>
-    <Content Include="..\About\PublishedFileId.txt">
-      <Link>About\PublishedFileId.txt</Link>
-    </Content>
-    <Content Include="..\Languages\English\Keyed\MPE_Letters.xml">
-      <Link>Languages\English\Keyed\MPE_Letters.xml</Link>
-    </Content>
-    <Content Include="..\Languages\English\Keyed\MPE_Settings.xml">
-      <Link>Languages\English\Keyed\MPE_Settings.xml</Link>
-    </Content>
-    <Content Include="..\LoadFolders.xml">
-      <Link>LoadFolders.xml</Link>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4063" />
-    <PackageReference Include="Lib.Harmony" Version="2.3.3" ExcludeAssets="runtime" />
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <RootNamespace>SirRandoo.MPE</RootNamespace>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <OutputPath>..\1.6\Assemblies</OutputPath>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <OutputPath>..\1.6\Assemblies</OutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\Defs\**"/>
+        <None Include="..\Patches\**"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\About\About.xml">
+            <Link>About\About.xml</Link>
+        </Content>
+        <Content Include="..\About\Preview.png">
+            <Link>About\Preview.png</Link>
+        </Content>
+        <Content Include="..\About\PublishedFileId.txt">
+            <Link>About\PublishedFileId.txt</Link>
+        </Content>
+        <Content Include="..\Languages\English\Keyed\MPE_Letters.xml">
+            <Link>Languages\English\Keyed\MPE_Letters.xml</Link>
+        </Content>
+        <Content Include="..\Languages\English\Keyed\MPE_Settings.xml">
+            <Link>Languages\English\Keyed\MPE_Settings.xml</Link>
+        </Content>
+        <Content Include="..\LoadFolders.xml">
+            <Link>LoadFolders.xml</Link>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4518"/>
+        <PackageReference Include="Lib.Harmony" Version="2.3.3" ExcludeAssets="runtime"/>
+    </ItemGroup>
 </Project>

@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 
-namespace SirRandoo.MPE
+namespace SirRandoo.MPE;
+
+public class Cache
 {
-    public class Cache
-    {
-        public List<string> Berserk { get; } = new List<string>();
-        public List<string> Slaughter { get; } = new List<string>();
-        public List<string> WanderConfused { get; } = new List<string>();
-        public List<string> SadisticRage { get; } = new List<string>();
-        public List<string> Manhunter { get; } = new List<string>();
-        public List<string> Insulting { get; } = new List<string>();
-        public List<string> Jailbreaker { get; set; } = new List<string>();
-        public List<string> SocialFight { get; } = new List<string>();
-    }
+    public List<string> Berserk { get; } = [];
+    public List<string> Slaughter { get; } = [];
+    public List<string> WanderConfused { get; } = [];
+    public List<string> SadisticRage { get; } = [];
+    public List<string> Manhunter { get; } = [];
+    public List<string> Insulting { get; } = [];
+    public List<string> Jailbreaker { get; set; } = [];
+    public List<string> SocialFight { get; } = [];
 }

@@ -4,40 +4,24 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace SirRandoo.MPE.Patches
+namespace SirRandoo.MPE.Patches;
+
+[UsedImplicitly]
+[HarmonyPatch(typeof(MentalBreakWorker_Catatonic), methodName: "TryStart")]
+public static class CatatonicBreakdownPatch
 {
+    private static int _snapshot = -1;
+
     [UsedImplicitly]
-    [HarmonyPatch(typeof(MentalBreakWorker_Catatonic), "TryStart")]
-    public static class CatatonicBreakdownPatch
+    [HarmonyPostfix]
+    public static void TryStart(Pawn pawn)
     {
-        private static int _snapshot = -1;
+        if (!Settings.CatatoniaEnabled) return;
+        if (pawn?.Spawned != true) return;
+        if (!pawn.health.hediffSet.HasHediff(HediffDefOf.CatatonicBreakdown)) return;
+        if (Find.TickManager.TicksGame - _snapshot < 60) return;
 
-        [UsedImplicitly]
-        [HarmonyPostfix]
-        public static void TryStart(Pawn pawn)
-        {
-            if (!Settings.CatatoniaEnabled)
-            {
-                return;
-            }
-
-            if (pawn?.Spawned != true)
-            {
-                return;
-            }
-
-            if (!pawn.health.hediffSet.HasHediff(HediffDefOf.CatatonicBreakdown))
-            {
-                return;
-            }
-
-            if (Find.TickManager.TicksGame - _snapshot < 60)
-            {
-                return;
-            }
-
-            Find.TickManager.Pause();
-            _snapshot = Find.TickManager.TicksGame;
-        }
+        Find.TickManager.Pause();
+        _snapshot = Find.TickManager.TicksGame;
     }
 }
